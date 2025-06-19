@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://mho35867ryku"]
+
+[ext_resource type="Texture2D" uid="uid://dc7j1ukjrl0a0" path="res://kenney_sokoban-pack/PNG/Default size/Crates/crate_02.png" id="2_u6bva"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhvqu"]
+size = Vector2(32, 31)
+
+[node name="Package On Player" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16, 15.5)
+shape = SubResource("RectangleShape2D_vhvqu")
+
+[node name="Crate02" type="Sprite2D" parent="."]
+position = Vector2(-16, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_u6bva")

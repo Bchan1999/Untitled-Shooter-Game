@@ -17,7 +17,7 @@ func _physics_process(delta):
 	
 	var mouse_pos = get_local_mouse_position()
 	var rotate = atan2(mouse_pos.y, mouse_pos.x)
-	arm.global_rotation = lerp_angle(arm.global_rotation, rotate, 0.2)
+	$ArmGun.global_rotation = lerp_angle($ArmGun.global_rotation, rotate, 0.2)
 
 	move_and_slide()
 
@@ -29,8 +29,8 @@ func _physics_process(delta):
 		
 func shoot():
 	var bullet = bullet_scene.instantiate()
-	bullet.global_position = arm.get_marker2d_global_position()
-	bullet.rotation = arm.global_rotation  # Use pivot's rotation, not player's
+	bullet.position = $ArmGun/Marker2D.global_position
+	bullet.rotation = $ArmGun.global_rotation  # Use pivot's rotation, not player's
 	get_tree().current_scene.add_child(bullet)
 	
 func pickup():

@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://sumxdh70ojpb"]
+[gd_scene load_steps=10 format=3 uid="uid://sumxdh70ojpb"]
 
 [ext_resource type="Script" uid="uid://bcjwgvntycs2r" path="res://Scripts/main_scene.gd" id="1_x6ack"]
 [ext_resource type="PackedScene" uid="uid://bvh7sokgb4p7f" path="res://Scenes/playground.tscn" id="2_6ev3c"]
-[ext_resource type="PackedScene" uid="uid://k476e557gjom" path="res://Scenes/player.tscn" id="2_iacmt"]
-[ext_resource type="PackedScene" uid="uid://cnyrq0nv5yndv" path="res://Scenes/slow_enemy.tscn" id="3_6ev3c"]
+[ext_resource type="PackedScene" uid="uid://k476e557gjom" path="res://Scenes/Characters/player.tscn" id="2_iacmt"]
+[ext_resource type="PackedScene" uid="uid://cnyrq0nv5yndv" path="res://Scenes/Characters/slow_enemy.tscn" id="3_6ev3c"]
 [ext_resource type="Script" uid="uid://s8xtgj22c7b4" path="res://Scripts/camera_2d.gd" id="3_maf8m"]
 [ext_resource type="PackedScene" uid="uid://b5mu5pes54gcq" path="res://Scenes/idol.tscn" id="6_6ev3c"]
 [ext_resource type="PackedScene" uid="uid://c6ssi6l2ufe34" path="res://Scenes/package.tscn" id="7_maf8m"]
+[ext_resource type="PackedScene" uid="uid://bvmadw4q1omcm" path="res://Scenes/Characters/npc_woman.tscn" id="8_huasi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x6ack"]
 vertices = PackedVector2Array(472, 272.969, -459.07, 271.023, -462.922, -275.039, 472, -278.953)
@@ -15,6 +16,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-473, -285, 482, -289, 
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_x6ack")
+metadata/_edit_vertical_guides_ = [-678.0]
 
 [node name="Playground" parent="." instance=ExtResource("2_6ev3c")]
 position = Vector2(-7, 17)
@@ -50,6 +52,9 @@ position = Vector2(341, -251)
 
 [node name="Package" parent="." instance=ExtResource("7_maf8m")]
 position = Vector2(-124, 132)
+
+[node name="NPC Woman" parent="." instance=ExtResource("8_huasi")]
+position = Vector2(287, 201)
 
 [editable path="Playground"]
 [editable path="Player"]

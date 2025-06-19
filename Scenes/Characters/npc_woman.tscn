@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvmadw4q1omcm"]
+
+[ext_resource type="Script" uid="uid://del7oi3wbx18v" path="res://Scenes/Characters/npc_woman.gd" id="1_jjjnd"]
+[ext_resource type="PackedScene" uid="uid://p25w4ispkqsm" path="res://Scenes/health.tscn" id="2_6qwyx"]
+[ext_resource type="Texture2D" uid="uid://bwfl4wax53ahl" path="res://Assets/NPC/woman/Untitled_Artwork-2 (1).png" id="2_7hygk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vt4ob"]
+radius = 24.0
+height = 76.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
+radius = 323.215
+
+[node name="NPC Woman" type="StaticBody2D"]
+script = ExtResource("1_jjjnd")
+
+[node name="Woman" type="Sprite2D" parent="."]
+position = Vector2(1, 19)
+scale = Vector2(0.19188, 0.19188)
+texture = ExtResource("2_7hygk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_vt4ob")
+
+[node name="PlayerClose" type="Area2D" parent="." groups=["player"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerClose"]
+shape = SubResource("CircleShape2D_1f0kj")
+
+[node name="Health" parent="." instance=ExtResource("2_6qwyx")]
+position = Vector2(2, 0)
+
+[connection signal="body_entered" from="PlayerClose" to="." method="_on_player_close_body_entered"]
+[connection signal="died" from="Health" to="." method="_on_health_died"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://nfonnahl8ub5"]
 
 [ext_resource type="Texture2D" uid="uid://dc7j1ukjrl0a0" path="res://kenney_sokoban-pack/PNG/Default size/Crates/crate_02.png" id="1_b6iuw"]
-[ext_resource type="Script" uid="uid://cw4dltf3ujbio" path="res://Scenes/packages.gd" id="1_dmd8v"]
+[ext_resource type="Script" uid="uid://cw4dltf3ujbio" path="res://Scripts/packages.gd" id="1_dmd8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhvqu"]
 size = Vector2(63, 62)

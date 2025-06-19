@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvh7sokgb4p7f"]
 
 [ext_resource type="Script" uid="uid://cqwxyrt3i1tb7" path="res://Scripts/Limit.gd" id="1_uof5o"]
-[ext_resource type="Script" uid="uid://bv0epwxmqksiv" path="res://Scenes/color_rect_2.gd" id="2_6xle2"]
+[ext_resource type="Script" uid="uid://bv0epwxmqksiv" path="res://Scripts/color_rect_2.gd" id="2_6xle2"]
 
 [node name="Playground" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-4011.0, 10098.0]
@@ -30,9 +30,9 @@ position = Vector2(-429, -281)
 script = ExtResource("1_uof5o")
 
 [node name="ColorRect2" type="ColorRect" parent="Level"]
-offset_left = 859.0
+offset_left = 828.0
 offset_top = -531.0
-offset_right = 2132.0
+offset_right = 2101.0
 offset_bottom = 1097.0
 color = Color(0.368627, 0.368627, 0.576471, 1)
 script = ExtResource("2_6xle2")

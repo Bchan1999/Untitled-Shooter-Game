@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dc7j1ukjrl0a0" path="res://kenney_sokoban-pack/PNG/Default size/Crates/crate_02.png" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://gr830kvjiu44" path="res://Assets/Character/Untitled_Artwork (17).png" id="4_fkybt"]
 [ext_resource type="Texture2D" uid="uid://dbb1p23pj3oxr" path="res://Assets/Character/Untitled_Artwork (19).png" id="4_vgqql"]
-[ext_resource type="Script" uid="uid://oajfb4msvbps" path="res://Scenes/pivot.gd" id="4_x3wgy"]
+[ext_resource type="Script" uid="uid://oajfb4msvbps" path="res://Scripts/pivot.gd" id="4_x3wgy"]
 
 [sub_resource type="Animation" id="Animation_fkybt"]
 length = 0.001
@@ -121,13 +121,6 @@ bullet_scene = ExtResource("3_i3pqv")
 item_detect = NodePath("ItemDetect")
 arm = NodePath("ArmGun")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_x3wgy")
@@ -135,26 +128,31 @@ libraries = {
 autoplay = "run"
 
 [node name="Crate02" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-12, 6)
 scale = Vector2(0.4375, 0.40625)
 texture = ExtResource("3_x3wgy")
 
 [node name="Crate03" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-12, -5)
 scale = Vector2(0.4375, 0.40625)
 texture = ExtResource("3_x3wgy")
 
 [node name="Crate04" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-12, -16)
 scale = Vector2(0.4375, 0.40625)
 texture = ExtResource("3_x3wgy")
 
 [node name="Crate05" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-12, -26)
 scale = Vector2(0.4375, 0.40625)
 texture = ExtResource("3_x3wgy")
 
-[node name="Crate06" type="Sprite2D" parent="." groups=["player"]]
+[node name="Crate06" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-12, -37)
 scale = Vector2(0.4375, 0.40625)
 texture = ExtResource("3_x3wgy")
@@ -166,11 +164,12 @@ sprite_frames = SubResource("SpriteFrames_6t5aa")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 3)
 shape = SubResource("RectangleShape2D_sh265")
 
 [node name="ArmGun" type="Node2D" parent="." node_paths=PackedStringArray("marker")]
-position = Vector2(-9, 2)
+position = Vector2(-11, 1)
 script = ExtResource("4_x3wgy")
 marker = NodePath("Marker2D")
 

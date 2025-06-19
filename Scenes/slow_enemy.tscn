@@ -1,13 +1,13 @@
 [gd_scene load_steps=21 format=3 uid="uid://cnyrq0nv5yndv"]
 
 [ext_resource type="Texture2D" uid="uid://bwn838ijxtaso" path="res://kenney_sokoban-pack/PNG/Default size/Player/player_01.png" id="1_7k104"]
-[ext_resource type="Script" uid="uid://bjfbr6je17fvi" path="res://Scripts/enemy.gd" id="2_afpow"]
+[ext_resource type="Script" uid="uid://bjfbr6je17fvi" path="res://Scripts/Enemy/enemy.gd" id="2_afpow"]
 [ext_resource type="Texture2D" uid="uid://ckw8o0qxs1vn3" path="res://Assets/Enemy/Chase/Untitled_Artwork-1.png" id="2_po0sg"]
 [ext_resource type="Script" uid="uid://dk5avv31mapwx" path="res://Scenes/state_machine.gd" id="3_afpow"]
 [ext_resource type="Texture2D" uid="uid://c57ldtrfwp5aw" path="res://Assets/Enemy/Chase/Untitled_Artwork-2.png" id="3_haro7"]
 [ext_resource type="Texture2D" uid="uid://inqcfpn245c8" path="res://Assets/Enemy/Chase/Untitled_Artwork-3.png" id="4_56vhr"]
-[ext_resource type="Script" uid="uid://bchfvl6t22k26" path="res://Scripts/enemy_idle.gd" id="4_287tu"]
-[ext_resource type="Script" uid="uid://cxpymppp0j0ne" path="res://Scripts/enemy_follow.gd" id="5_0830c"]
+[ext_resource type="Script" uid="uid://bchfvl6t22k26" path="res://Scripts/Enemy/enemy_idle.gd" id="4_287tu"]
+[ext_resource type="Script" uid="uid://cxpymppp0j0ne" path="res://Scripts/Enemy/enemy_follow.gd" id="5_0830c"]
 [ext_resource type="Texture2D" uid="uid://cky6yp1qnwf88" path="res://Assets/Enemy/Chase/Untitled_Artwork-4.png" id="5_ta2yt"]
 [ext_resource type="PackedScene" uid="uid://p25w4ispkqsm" path="res://Scenes/health.tscn" id="6_ghaa6"]
 [ext_resource type="Texture2D" uid="uid://b3lfcxfe8rrpu" path="res://Assets/Enemy/Idle/Untitled_Artwork-1.png" id="11_56vhr"]
@@ -54,6 +54,33 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_tk7xo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
 [sub_resource type="Animation" id="Animation_hgeoe"]
 resource_name = "chase"
 length = 0.4
@@ -81,33 +108,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"chase"]
-}
-
-[sub_resource type="Animation" id="Animation_tk7xo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
 }
 
 [sub_resource type="Animation" id="Animation_m4x7e"]

@@ -1,0 +1,157 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6ssi6l2ufe34"]
+
+[ext_resource type="Script" uid="uid://cw4dltf3ujbio" path="res://Scenes/packages.gd" id="1_wvags"]
+[ext_resource type="Texture2D" uid="uid://dc7j1ukjrl0a0" path="res://kenney_sokoban-pack/PNG/Default size/Crates/crate_02.png" id="2_8o66u"]
+[ext_resource type="Texture2D" uid="uid://raamamheneh5" path="res://Assets/idle_crate.png" id="3_84xjq"]
+[ext_resource type="Texture2D" uid="uid://boea8s8yfc237" path="res://Assets/crate_01.png" id="4_jjf1w"]
+[ext_resource type="Texture2D" uid="uid://pbqhv6j76u4q" path="res://Assets/crate_02.png" id="5_tv5w0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhvqu"]
+size = Vector2(32, 31)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bievo"]
+radius = 76.1643
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbijv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_84xjq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jjf1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tv5w0")
+}],
+"loop": true,
+"name": &"player_hover",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_cvf7r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_jydug"]
+resource_name = "idle"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0999762),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_xbk46"]
+resource_name = "player_hover"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.198338),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.198338),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"player_hover", &"player_hover"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jydug"]
+_data = {
+&"RESET": SubResource("Animation_cvf7r"),
+&"idle": SubResource("Animation_jydug"),
+&"player_hover": SubResource("Animation_xbk46")
+}
+
+[node name="Package" type="StaticBody2D" node_paths=PackedStringArray("player_detect", "animation_player")]
+script = ExtResource("1_wvags")
+player_detect = NodePath("PlayerDetect")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_vhvqu")
+
+[node name="Crate02" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_8o66u")
+
+[node name="PlayerDetect" type="Area2D" parent="." groups=["package"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
+shape = SubResource("CircleShape2D_bievo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dbijv")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["player"]]
+libraries = {
+&"": SubResource("AnimationLibrary_jydug")
+}
+autoplay = "idle"
+
+[connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]

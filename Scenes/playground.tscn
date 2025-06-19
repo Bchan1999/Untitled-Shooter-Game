@@ -1,35 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvh7sokgb4p7f"]
+[gd_scene load_steps=3 format=3 uid="uid://bvh7sokgb4p7f"]
 
 [ext_resource type="Script" uid="uid://cqwxyrt3i1tb7" path="res://Scripts/Limit.gd" id="1_uof5o"]
+[ext_resource type="Script" uid="uid://bv0epwxmqksiv" path="res://Scenes/color_rect_2.gd" id="2_6xle2"]
 
 [node name="Playground" type="Node2D"]
-position = Vector2(4910, 1928)
 metadata/_edit_vertical_guides_ = [-4011.0, 10098.0]
 metadata/_edit_horizontal_guides_ = [-1254.0, 4067.0]
 
 [node name="Background" type="ColorRect" parent="."]
-offset_left = -4909.0
-offset_top = -1912.0
-offset_right = -4869.0
-offset_bottom = -1872.0
+offset_left = -4868.0
+offset_top = -1876.0
+offset_right = -4828.0
+offset_bottom = -1836.0
 scale = Vector2(251.928, 101.641)
 color = Color(0.177499, 0.191038, 0.221013, 1)
 
 [node name="MainAreaSprite" type="ColorRect" parent="."]
-offset_left = -4008.0
-offset_top = -1253.0
-offset_right = -3968.0
-offset_bottom = -1213.0
+offset_left = -3967.0
+offset_top = -1217.0
+offset_right = -3927.0
+offset_bottom = -1177.0
 scale = Vector2(202.537, 67.2038)
 color = Color(0.565011, 0.589839, 0.644486, 1)
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(-464, -300)
+[node name="Level" type="Node2D" parent="."]
+position = Vector2(-429, -281)
 
-[node name="AreaLimit" type="Node" parent="Node2D"]
+[node name="AreaLimit" type="Node" parent="Level"]
 script = ExtResource("1_uof5o")
 
-[node name="ColorRect" type="ColorRect" parent="Node2D"]
+[node name="ColorRect2" type="ColorRect" parent="Level"]
+offset_left = 859.0
+offset_top = -531.0
+offset_right = 2132.0
+offset_bottom = 1097.0
+color = Color(0.368627, 0.368627, 0.576471, 1)
+script = ExtResource("2_6xle2")
+
+[node name="ColorRect" type="ColorRect" parent="Level"]
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(21.4742, 13.8052)

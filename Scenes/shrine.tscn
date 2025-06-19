@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://chw42tro85rr0"]
+
+[ext_resource type="Texture2D" uid="uid://60hqi2qrxqce" path="res://kenney_sokoban-pack/PNG/Default size/Crates/crate_22.png" id="1_2gl6x"]
+[ext_resource type="Script" uid="uid://b1vgaud0vthjo" path="res://Scripts/shrine.gd" id="1_yguy6"]
+[ext_resource type="Script" uid="uid://c7u7ewld60gsw" path="res://Scripts/shrine_detect.gd" id="2_fagqx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yguy6"]
+size = Vector2(64, 61)
+
+[node name="Shrine" type="Node2D"]
+script = ExtResource("1_yguy6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("2_fagqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_yguy6")
+
+[node name="Sprite" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_2gl6x")

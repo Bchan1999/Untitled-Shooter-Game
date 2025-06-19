@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://sumxdh70ojpb"]
+
+[ext_resource type="Script" uid="uid://bcjwgvntycs2r" path="res://Scripts/main_scene.gd" id="1_x6ack"]
+[ext_resource type="PackedScene" uid="uid://k476e557gjom" path="res://Scenes/player.tscn" id="2_iacmt"]
+[ext_resource type="PackedScene" uid="uid://cnyrq0nv5yndv" path="res://Scenes/enemy.tscn" id="3_6ev3c"]
+[ext_resource type="PackedScene" uid="uid://chw42tro85rr0" path="res://Scenes/shrine.tscn" id="4_maf8m"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_x6ack")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -467.0
+offset_top = -293.0
+offset_right = 484.0
+offset_bottom = 280.0
+color = Color(0.366409, 0.296021, 0.280095, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_iacmt")]
+
+[node name="Enemy" parent="." instance=ExtResource("3_6ev3c")]
+position = Vector2(-263, -172)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_6ev3c")]
+visible = false
+position = Vector2(325, -160)
+
+[node name="Shrine" parent="." instance=ExtResource("4_maf8m")]
+position = Vector2(-325, -56)
+
+[node name="Shrine2" parent="." instance=ExtResource("4_maf8m")]
+position = Vector2(324, 1)
+
+[node name="Shrine3" parent="." instance=ExtResource("4_maf8m")]
+position = Vector2(-137, 219)
+
+[editable path="Player"]

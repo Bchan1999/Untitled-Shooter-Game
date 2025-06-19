@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://sumxdh70ojpb"]
+
+[ext_resource type="Script" uid="uid://bcjwgvntycs2r" path="res://Scripts/main_scene.gd" id="1_x6ack"]
+[ext_resource type="PackedScene" uid="uid://bvh7sokgb4p7f" path="res://Scenes/playground.tscn" id="2_6ev3c"]
+[ext_resource type="PackedScene" uid="uid://k476e557gjom" path="res://Scenes/player.tscn" id="2_iacmt"]
+[ext_resource type="PackedScene" uid="uid://cnyrq0nv5yndv" path="res://Scenes/slow_enemy.tscn" id="3_6ev3c"]
+[ext_resource type="Script" uid="uid://s8xtgj22c7b4" path="res://Scripts/camera_2d.gd" id="3_maf8m"]
+[ext_resource type="PackedScene" uid="uid://b5mu5pes54gcq" path="res://Scenes/idol.tscn" id="6_6ev3c"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_x6ack"]
+vertices = PackedVector2Array(472, 272.969, -459.07, 271.023, -462.922, -275.039, 472, -278.953)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-473, -285, 482, -289, 482, 283, -469, 281), PackedVector2Array(-183, 172, -70, 175, -89, 268, -183, 255)])
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_x6ack")
+
+[node name="Playground" parent="." instance=ExtResource("2_6ev3c")]
+position = Vector2(-7, 17)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -467.0
+offset_top = -293.0
+offset_right = 484.0
+offset_bottom = 280.0
+color = Color(0.366409, 0.296021, 0.280095, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+zoom = Vector2(1.23, 1.23)
+script = ExtResource("3_maf8m")
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_iacmt")]
+position = Vector2(-29, -9)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_x6ack")
+
+[node name="Idol" parent="." instance=ExtResource("6_6ev3c")]
+position = Vector2(180, -1)
+
+[node name="Slow Enemy" parent="." instance=ExtResource("3_6ev3c")]
+position = Vector2(-441, -250)
+
+[node name="Slow Enemy2" parent="." instance=ExtResource("3_6ev3c")]
+position = Vector2(341, -251)
+
+[editable path="Playground"]
+[editable path="Player"]

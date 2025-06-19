@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://sumxdh70ojpb"]
+
+[ext_resource type="Script" uid="uid://bcjwgvntycs2r" path="res://Scripts/main_scene.gd" id="1_x6ack"]
+[ext_resource type="PackedScene" uid="uid://bvh7sokgb4p7f" path="res://Scenes/playground.tscn" id="2_6ev3c"]
+[ext_resource type="PackedScene" uid="uid://k476e557gjom" path="res://Scenes/player.tscn" id="2_iacmt"]
+[ext_resource type="PackedScene" uid="uid://cnyrq0nv5yndv" path="res://Scenes/enemy.tscn" id="3_6ev3c"]
+[ext_resource type="Script" uid="uid://s8xtgj22c7b4" path="res://Scripts/camera_2d.gd" id="3_maf8m"]
+[ext_resource type="PackedScene" uid="uid://chw42tro85rr0" path="res://Scenes/shrine.tscn" id="4_maf8m"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_x6ack"]
+vertices = PackedVector2Array(-204.219, 268.648, -114.469, 271.742, -459.07, 271.023, 389.547, -61.9219, 253.82, -63.0938, -255.18, -123.906, -462.922, -275.039, 472, -278.953, 472, 272.969, 395.469, 64.7422, -390, -125.094, -390, -0.710938, 256.18, 68.25, -67.7109, 271.844, -71.3203, 156.727, -201.781, 160.258, -264.75, -4.25781)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6, 7), PackedInt32Array(7, 8, 9, 3), PackedInt32Array(6, 5, 10), PackedInt32Array(2, 6, 10, 11), PackedInt32Array(12, 9, 8, 13, 14), PackedInt32Array(15, 0, 2, 11, 16), PackedInt32Array(14, 15, 16, 5, 4, 12)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-473, -285, 482, -289, 482, 283, -469, 281), PackedVector2Array(-183, 172, -70, 175, -89, 268, -183, 255)])
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_x6ack")
+
+[node name="Playground" parent="." instance=ExtResource("2_6ev3c")]
+position = Vector2(-7, 17)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -467.0
+offset_top = -293.0
+offset_right = 484.0
+offset_bottom = 280.0
+color = Color(0.366409, 0.296021, 0.280095, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_maf8m")
+
+[node name="Player" parent="." instance=ExtResource("2_iacmt")]
+position = Vector2(-406, 39)
+
+[node name="Enemy" parent="." instance=ExtResource("3_6ev3c")]
+position = Vector2(-263, -172)
+
+[node name="Shrine" parent="." instance=ExtResource("4_maf8m")]
+position = Vector2(-325, -56)
+
+[node name="Shrine2" parent="." instance=ExtResource("4_maf8m")]
+position = Vector2(324, 1)
+
+[node name="Shrine3" parent="." instance=ExtResource("4_maf8m")]
+position = Vector2(-137, 219)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_x6ack")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D"]
+position = Vector2(-2, 0)
+vertices = PackedVector2Array(-378, -115, -264, -114, -272, -14, -378, -11)
+affect_navigation_mesh = true
+
+[node name="NavigationObstacle2D2" type="NavigationObstacle2D" parent="NavigationRegion2D"]
+vertices = PackedVector2Array(-192, 170, -81, 167, -78, 263, -194, 259)
+affect_navigation_mesh = true
+
+[node name="NavigationObstacle2D3" type="NavigationObstacle2D" parent="NavigationRegion2D"]
+vertices = PackedVector2Array(264, -53, 266, 58, 385, 55, 380, -52)
+affect_navigation_mesh = true
+
+[node name="Enemy2" parent="." instance=ExtResource("3_6ev3c")]
+position = Vector2(291, -211)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_6ev3c")]
+position = Vector2(235, 215)
+
+[node name="Enemy4" parent="." instance=ExtResource("3_6ev3c")]
+position = Vector2(-387, 263)
+
+[editable path="Player"]

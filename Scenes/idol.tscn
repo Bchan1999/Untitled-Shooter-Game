@@ -1,0 +1,148 @@
+[gd_scene load_steps=11 format=3 uid="uid://b5mu5pes54gcq"]
+
+[ext_resource type="Texture2D" uid="uid://b3k1e2wst5egm" path="res://kenney_sokoban-pack/PNG/Default size/Environment/environment_11.png" id="1_1mtol"]
+[ext_resource type="Script" uid="uid://dqgpi785iwaus" path="res://Scripts/idol.gd" id="1_3nbd2"]
+[ext_resource type="Texture2D" uid="uid://cvpnnf6m3y2d2" path="res://Assets/coinHover1.png" id="3_xbk46"]
+[ext_resource type="Texture2D" uid="uid://bp7hlu7fkejl" path="res://Assets/coinHover2.png" id="4_cvf7r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3nbd2"]
+radius = 76.1643
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jydug"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1mtol")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xbk46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cvf7r")
+}],
+"loop": false,
+"name": &"playerHover",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_cvf7r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_jydug"]
+resource_name = "idle"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0999762),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_xbk46"]
+resource_name = "player_hover"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"playerHover"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jydug"]
+_data = {
+&"RESET": SubResource("Animation_cvf7r"),
+&"idle": SubResource("Animation_jydug"),
+&"player_hover": SubResource("Animation_xbk46")
+}
+
+[node name="Idol" type="Node2D" node_paths=PackedStringArray("player_detect", "animation_player")]
+script = ExtResource("1_3nbd2")
+player_detect = NodePath("PlayerDetect")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="IdolSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("1_1mtol")
+
+[node name="PlayerDetect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
+shape = SubResource("CircleShape2D_3nbd2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jydug")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jydug")
+}
+
+[connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]

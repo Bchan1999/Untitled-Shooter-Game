@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct5j3hclcepc8"]
+
+[ext_resource type="Texture2D" uid="uid://dxpagvaw04xlc" path="res://Assets/NPC/woman/Untitled_Artwork-1 (1).png" id="1_iba0x"]
+[ext_resource type="Texture2D" uid="uid://pmp1x5k000oa" path="res://Assets/UI/Untitled_Artwork-3.png" id="2_yrrua"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iba0x"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UntitledArtwork-1(1)" type="Sprite2D" parent="."]
+position = Vector2(536, 304)
+scale = Vector2(0.483294, 0.486025)
+texture = ExtResource("1_iba0x")
+
+[node name="UntitledArtwork-3" type="Sprite2D" parent="."]
+position = Vector2(576, 312)
+scale = Vector2(0.443696, 0.443696)
+texture = ExtResource("2_yrrua")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 464.0
+offset_right = 360.0
+offset_bottom = 536.0
+scale = Vector2(1.63763, 1.63763)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iba0x")
+text = "I love you
+"

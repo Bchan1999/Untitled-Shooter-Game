@@ -1,0 +1,98 @@
+[gd_scene load_steps=16 format=3 uid="uid://dd38h40m3uwlg"]
+
+[ext_resource type="Shader" uid="uid://k138v4nvyoi7" path="res://Shader/test.gdshader" id="1_gaecu"]
+[ext_resource type="Texture2D" uid="uid://dubkflltfnf3x" path="res://test_image.svg" id="2_b2hsv"]
+[ext_resource type="Shader" uid="uid://qgeiekhpiemx" path="res://Shader/test2.gdshader" id="3_b2hsv"]
+[ext_resource type="Shader" uid="uid://bihw0p18jqp7j" path="res://Shader/test3.gdshader" id="4_0bp8k"]
+[ext_resource type="Shader" uid="uid://d4dqy4pmgrfrg" path="res://Shader/VHS.gdshader" id="5_uq2x1"]
+[ext_resource type="Texture2D" uid="uid://cwqckv0doxuja" path="res://HeadPic.JPG" id="6_5kufe"]
+[ext_resource type="Shader" uid="uid://txk31kctkhlw" path="res://Shader/gunReticle.gdshader" id="6_17rlb"]
+[ext_resource type="Script" uid="uid://d1lcnyym3sgnf" path="res://Shader/gunReticle.gd" id="7_4wptw"]
+[ext_resource type="Shader" uid="uid://bx5hth4ja0xrl" path="res://Shader/pixel.gdshader" id="8_ka3v7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bp8k"]
+shader = ExtResource("1_gaecu")
+shader_parameter/speed = 10.0
+shader_parameter/scale = 10.0
+shader_parameter/color_shift = Vector3(0.2, 0.1, 0.9)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yk4l5"]
+shader = ExtResource("3_b2hsv")
+shader_parameter/time_speed = 1.0
+shader_parameter/glitch_strength = 10.0
+shader_parameter/chroma_offset = 1.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uq2x1"]
+shader = ExtResource("4_0bp8k")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 1.0
+shader_parameter/blur_samples = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fora"]
+shader = ExtResource("5_uq2x1")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 1.0
+shader_parameter/blur_samples = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vt58m"]
+shader = ExtResource("6_17rlb")
+shader_parameter/rotation_speed = 2.0
+shader_parameter/reticle_color = Color(1, 0, 0, 1)
+shader_parameter/inner_circle_size = 0.05
+shader_parameter/outer_circle_size = 0.08
+shader_parameter/circle_thickness = 0.01
+shader_parameter/center_dot_size = 0.005
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0m6j8"]
+render_priority = 0
+shader = ExtResource("8_ka3v7")
+
+[node name="Test Shader" type="Node2D"]
+
+[node name="GoldWater" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_0bp8k")
+position = Vector2(-121, 3)
+texture = ExtResource("2_b2hsv")
+
+[node name="Creepy" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_yk4l5")
+position = Vector2(232, 0)
+scale = Vector2(1.60575, 1.59007)
+texture = ExtResource("2_b2hsv")
+
+[node name="TestImage" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uq2x1")
+position = Vector2(0, -2)
+texture = ExtResource("2_b2hsv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+scale = Vector2(1.74, 1.74)
+transform = Transform2D(1.74, 0, 0, 1.74, 0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_8fora")
+offset_left = 0.574713
+offset_top = -13.7931
+offset_right = 107.575
+offset_bottom = 37.2069
+
+[node name="GunReticle" type="ColorRect" parent="."]
+modulate = Color(0.82272, 0.476642, 0.727605, 1)
+self_modulate = Color(0.41529, 0.728739, 0.80763, 1)
+material = SubResource("ShaderMaterial_vt58m")
+offset_right = 10.0
+offset_bottom = 10.0
+scale = Vector2(1.16638, 1.1693)
+color = Color(0.576283, 0.548816, 0.514899, 1)
+script = ExtResource("7_4wptw")
+
+[node name="HeadPic" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0m6j8")
+position = Vector2(105, 30)
+scale = Vector2(0.0597223, 0.0597223)
+texture = ExtResource("6_5kufe")

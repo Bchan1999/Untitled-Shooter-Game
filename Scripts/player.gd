@@ -10,10 +10,17 @@ var num_of_packages: int = 0
 @export var bullet_scene : PackedScene
 @export var item_detect : Area2D
 @export var arm : Node2D
+@export var anim : AnimationPlayer
 
 func _physics_process(delta):
 	var dir = Input.get_vector("left", "right", "up" , "down")
 	velocity = dir * move_speed
+	
+	if dir == Vector2(1,0):
+		anim.play("run")
+		$AnimatedSprite2D.flip_h = false
+	if dir == Vector2(-1, 0):
+		$AnimatedSprite2D.flip_h = true
 	
 	var mouse_pos = get_local_mouse_position()
 	var rotate = atan2(mouse_pos.y, mouse_pos.x)

@@ -14,8 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://c70mp8k5cjexs" path="res://Assets/Enemy/Idle/Untitled_Artwork-2.png" id="12_ta2yt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vt4ob"]
-radius = 24.0
-height = 76.0
+radius = 17.181
+height = 56.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_afpow"]
 radius = 313.359
@@ -156,12 +156,14 @@ position = Vector2(1, -2)
 texture = ExtResource("1_7k104")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -2)
+position = Vector2(1, -1)
+scale = Vector2(1.04767, 1)
 shape = SubResource("CapsuleShape2D_vt4ob")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="PlayerFar" type="Area2D" parent="." groups=["player"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFar"]
 shape = SubResource("CircleShape2D_afpow")

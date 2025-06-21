@@ -109,79 +109,79 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
-size = Vector2(55, 74.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_khnq4"]
+radius = 24.0
+height = 76.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgqql"]
 radius = 48.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("item_detect", "arm") groups=["player"]]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("item_detect", "arm", "anim") groups=["player"]]
 script = ExtResource("1_4flbx")
 bullet_scene = ExtResource("3_i3pqv")
 item_detect = NodePath("ItemDetect")
 arm = NodePath("ArmGun")
+anim = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_x3wgy")
 }
-autoplay = "run"
 
-[node name="Crate02" type="Sprite2D" parent="."]
+[node name="GroupOfCrates" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-12, 6)
 scale = Vector2(0.4375, 0.40625)
 texture = ExtResource("3_x3wgy")
 
-[node name="Crate03" type="Sprite2D" parent="."]
+[node name="Crate04" type="Sprite2D" parent="GroupOfCrates"]
 visible = false
-position = Vector2(-12, -5)
-scale = Vector2(0.4375, 0.40625)
+position = Vector2(0, -54.1538)
 texture = ExtResource("3_x3wgy")
 
-[node name="Crate04" type="Sprite2D" parent="."]
+[node name="Crate05" type="Sprite2D" parent="GroupOfCrates"]
 visible = false
-position = Vector2(-12, -16)
-scale = Vector2(0.4375, 0.40625)
+position = Vector2(0, -78.7692)
 texture = ExtResource("3_x3wgy")
 
-[node name="Crate05" type="Sprite2D" parent="."]
+[node name="Crate06" type="Sprite2D" parent="GroupOfCrates"]
 visible = false
-position = Vector2(-12, -26)
-scale = Vector2(0.4375, 0.40625)
+position = Vector2(0, -105.846)
 texture = ExtResource("3_x3wgy")
 
-[node name="Crate06" type="Sprite2D" parent="."]
+[node name="Crate03" type="Sprite2D" parent="GroupOfCrates"]
 visible = false
-position = Vector2(-12, -37)
-scale = Vector2(0.4375, 0.40625)
+position = Vector2(0, -27.0769)
 texture = ExtResource("3_x3wgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(10.9425, -2.83647)
 scale = Vector2(0.220351, 0.220351)
 sprite_frames = SubResource("SpriteFrames_6t5aa")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(1, 3)
-shape = SubResource("RectangleShape2D_sh265")
+position = Vector2(11.9425, -5.83647)
+shape = SubResource("CapsuleShape2D_khnq4")
 
-[node name="ArmGun" type="Node2D" parent="." node_paths=PackedStringArray("marker")]
-position = Vector2(-11, 1)
+[node name="ArmGun" type="Node2D" parent="." node_paths=PackedStringArray("marker", "bullet")]
+position = Vector2(1.19209e-07, -1.19209e-07)
+rotation = 0.119573
 script = ExtResource("4_x3wgy")
 marker = NodePath("Marker2D")
+bullet = NodePath("BulletSpawn")
 
 [node name="BulletSpawn" type="Sprite2D" parent="ArmGun"]
-position = Vector2(23, 6)
+position = Vector2(22.0519, 1.30978)
 scale = Vector2(0.263316, 0.263316)
 texture = ExtResource("4_fkybt")
 
 [node name="Marker2D" type="Marker2D" parent="ArmGun"]
-position = Vector2(57, 3)
+position = Vector2(56.1966, -1.71582)
+rotation = -0.0488298
 
 [node name="ItemDetect" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDetect"]
 position = Vector2(1, 2)

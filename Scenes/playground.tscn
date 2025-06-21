@@ -29,7 +29,7 @@ position = Vector2(-429, -281)
 [node name="AreaLimit" type="Node" parent="Level"]
 script = ExtResource("1_uof5o")
 
-[node name="ColorRect2" type="ColorRect" parent="Level"]
+[node name="Room1" type="ColorRect" parent="Level"]
 offset_left = 828.0
 offset_top = -531.0
 offset_right = 2101.0
@@ -37,8 +37,16 @@ offset_bottom = 1097.0
 color = Color(0.368627, 0.368627, 0.576471, 1)
 script = ExtResource("2_6xle2")
 
-[node name="ColorRect" type="ColorRect" parent="Level"]
+[node name="Room2" type="ColorRect" parent="Level"]
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(21.4742, 13.8052)
 color = Color(0.368192, 0.366738, 0.577902, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Level"]
+offset_left = 2099.0
+offset_top = 552.0
+offset_right = 2139.0
+offset_bottom = 592.0
+scale = Vector2(12.92, 10.32)
+color = Color(0.279565, 0.443077, 0.481894, 1)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwt7oxekgnuus"]
+
+[ext_resource type="Shader" uid="uid://txk31kctkhlw" path="res://Shader/gunReticle.gdshader" id="1_fsq4c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5l68f"]
+shader = ExtResource("1_fsq4c")
+shader_parameter/rotation_speed = 2.0
+shader_parameter/reticle_color = Color(1, 0, 0, 1)
+shader_parameter/inner_circle_size = 0.05
+shader_parameter/outer_circle_size = 0.08
+shader_parameter/circle_thickness = 0.01
+shader_parameter/center_dot_size = 0.005
+
+[node name="Cursor" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5l68f")
+offset_right = 40.0
+offset_bottom = 40.0

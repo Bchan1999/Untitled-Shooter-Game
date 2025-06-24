@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://0n34nubasb6d"]
+
+[ext_resource type="Script" uid="uid://bbu2742o3cw7f" path="res://Scripts/test_level.gd" id="1_iti4p"]
+[ext_resource type="PackedScene" uid="uid://cnyrq0nv5yndv" path="res://Scenes/Characters/slow_enemy.tscn" id="2_rwer3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76v2p"]
+size = Vector2(899.013, 517.643)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iti4p"]
+size = Vector2(101.892, 89.678)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jkl3w"]
+vertices = PackedVector2Array(466.711, -274.289, 466.711, 276.328, -466.258, 277.18, -464.813, -276.813)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-474.789, -286.834, 476.71, -284.272, 476.71, 286.331, -476.288, 287.186)])
+
+[node name="RoomLayout1" type="Node2D" node_paths=PackedStringArray("area") groups=["room1"]]
+scale = Vector2(1.95265, 1.71401)
+script = ExtResource("1_iti4p")
+area = NodePath("StaticBody2D/CollisionShape2D")
+
+[node name="MainLevel" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -479.0
+offset_top = -283.0
+offset_right = 11.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.95265, 1.71401)
+color = Color(0.366409, 0.296021, 0.280095, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2.46015, 0.175673)
+scale = Vector2(0.999999, 1)
+shape = SubResource("RectangleShape2D_76v2p")
+disabled = true
+debug_color = Color(0.363083, 0.562586, 0.691909, 0.42)
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+position = Vector2(-230.939, -297.26)
+
+[node name="Door" type="ColorRect" parent="Area2D"]
+offset_left = -27.0611
+offset_top = -80.7398
+offset_right = 80.9389
+offset_bottom = 12.2602
+color = Color(0.1368, 0.451805, 0.349546, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(25.2055, -35.2376)
+shape = SubResource("RectangleShape2D_iti4p")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_jkl3w")
+
+[node name="Slow Enemy" parent="." instance=ExtResource("2_rwer3")]
+position = Vector2(-375.065, -87.8065)
+
+[node name="Slow Enemy2" parent="." instance=ExtResource("2_rwer3")]
+position = Vector2(302.006, 144.535)
+
+[node name="Slow Enemy3" parent="." instance=ExtResource("2_rwer3")]
+position = Vector2(-201.111, 207.745)
+
+[node name="Slow Enemy4" parent="." instance=ExtResource("2_rwer3")]
+position = Vector2(309.504, -139.058)
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(1.46117, 0)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

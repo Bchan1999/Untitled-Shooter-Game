@@ -16,11 +16,15 @@ func _physics_process(delta):
 	var dir = Input.get_vector("left", "right", "up" , "down")
 	velocity = dir * move_speed
 	
-	if dir == Vector2(1,0):
+	if Input.is_action_pressed("right"):
 		anim.play("run")
 		$AnimatedSprite2D.flip_h = false
-	if dir == Vector2(-1, 0):
+	if Input.is_action_pressed("left"):
+		anim.play("run")
 		$AnimatedSprite2D.flip_h = true
+	if velocity == Vector2(0,0):
+		anim.stop()
+	
 	
 	var mouse_pos = get_local_mouse_position()
 	var rotate = atan2(mouse_pos.y, mouse_pos.x)

@@ -32,8 +32,3 @@ material = SubResource("ShaderMaterial_mai8y")
 offset_left = 6.0
 offset_right = 1103.0
 offset_bottom = 620.0
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_iacmt")]
-
-[node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_iacmt")]
-player = NodePath("../CharacterBody2D")

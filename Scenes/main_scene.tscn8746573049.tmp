@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=3 uid="uid://sumxdh70ojpb"]
+
+[ext_resource type="Script" uid="uid://bcjwgvntycs2r" path="res://Scripts/main_scene.gd" id="1_x6ack"]
+[ext_resource type="PackedScene" uid="uid://bvh7sokgb4p7f" path="res://Scenes/playground.tscn" id="2_6ev3c"]
+[ext_resource type="PackedScene" uid="uid://k476e557gjom" path="res://Scenes/Characters/player.tscn" id="2_iacmt"]
+[ext_resource type="PackedScene" uid="uid://cnyrq0nv5yndv" path="res://Scenes/Characters/slow_enemy.tscn" id="3_6ev3c"]
+[ext_resource type="Script" uid="uid://s8xtgj22c7b4" path="res://Scripts/camera_2d.gd" id="3_maf8m"]
+[ext_resource type="PackedScene" uid="uid://0n34nubasb6d" path="res://Scenes/test_level.tscn" id="3_mai8y"]
+[ext_resource type="PackedScene" uid="uid://b5mu5pes54gcq" path="res://Scenes/idol.tscn" id="6_6ev3c"]
+[ext_resource type="PackedScene" uid="uid://c6ssi6l2ufe34" path="res://Scenes/package.tscn" id="7_maf8m"]
+[ext_resource type="PackedScene" uid="uid://bvmadw4q1omcm" path="res://Scenes/Characters/npc_woman.tscn" id="8_huasi"]
+[ext_resource type="Shader" uid="uid://d4dqy4pmgrfrg" path="res://Shader/VHS.gdshader" id="9_m1efj"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_huasi"]
+vertices = PackedVector2Array(676, 1404.95, -574, 1399.04, -574, -198, 676, -198)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-584, -208, -584, 1409, 686, 1415, 686, -208)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_x6ack"]
+vertices = PackedVector2Array(472, 272.969, -459.07, 271.023, -462.922, -275.039, 472, -278.953)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-473, -285, 482, -289, 482, 283, -469, 281), PackedVector2Array(-183, 172, -70, 175, -89, 268, -183, 255)])
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mai8y"]
+shader = ExtResource("9_m1efj")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 0.26
+shader_parameter/blur_samples = 3
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_x6ack")
+metadata/_edit_vertical_guides_ = [1817.0]
+metadata/_edit_horizontal_guides_ = [-496.0]
+
+[node name="TestLevel" parent="." instance=ExtResource("3_mai8y")]
+position = Vector2(1483, 0)
+
+[node name="Playground" parent="." instance=ExtResource("2_6ev3c")]
+visible = false
+position = Vector2(-7, 17)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player", "test_level")]
+position = Vector2(1489, 5)
+zoom = Vector2(1.23, 1.23)
+script = ExtResource("3_maf8m")
+player = NodePath("../Player")
+test_level = NodePath("../TestLevel")
+
+[node name="Player" parent="." instance=ExtResource("2_iacmt")]
+position = Vector2(1460, -4)
+
+[node name="NavigationRegion2D2" type="NavigationRegion2D" parent="."]
+visible = false
+position = Vector2(989, -563)
+navigation_polygon = SubResource("NavigationPolygon_huasi")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_x6ack")
+
+[node name="Idol" parent="." instance=ExtResource("6_6ev3c")]
+position = Vector2(1669, 4)
+
+[node name="Slow Enemy" parent="." instance=ExtResource("3_6ev3c")]
+position = Vector2(1048, -245)
+
+[node name="Slow Enemy2" parent="." instance=ExtResource("3_6ev3c")]
+position = Vector2(1830, -246)
+
+[node name="Package" parent="." instance=ExtResource("7_maf8m")]
+position = Vector2(1365, 137)
+
+[node name="NPC Woman" parent="." instance=ExtResource("8_huasi")]
+position = Vector2(1776, 206)
+
+[node name="Slow Enemy3" parent="." instance=ExtResource("3_6ev3c")]
+position = Vector2(2034, 365)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+scale = Vector2(1.74, 1.74)
+transform = Transform2D(1.74, 0, 0, 1.74, 0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_mai8y")
+offset_left = 6.0
+offset_right = 1103.0
+offset_bottom = 620.0
+
+[editable path="Playground"]
+[editable path="Player"]

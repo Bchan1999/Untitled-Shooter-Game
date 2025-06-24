@@ -12,7 +12,8 @@ func ready():
 func _physics_process(delta):
 	position += Vector2.RIGHT.rotated(rotation) * speed * delta
 	
-	var distance = global_position.distance_to(start)
+	var distance = $CollisionShape2D.position.distance_to(start)
+	print(distance)
 	# Check if the distance exceeds the limit
 	if distance > max_distance:
 		queue_free()

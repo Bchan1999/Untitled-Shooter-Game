@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bcjwgvntycs2r" path="res://Scripts/main_scene.gd" id="1_x6ack"]
 [ext_resource type="PackedScene" uid="uid://k476e557gjom" path="res://Scenes/Characters/player.tscn" id="2_iacmt"]
-[ext_resource type="PackedScene" uid="uid://b6e6fuxradvm1" path="res://Scenes/camera_2d.tscn" id="3_iacmt"]
-[ext_resource type="PackedScene" uid="uid://cjr7pcpwpew57" path="res://Scenes/level_management.tscn" id="4_iacmt"]
+[ext_resource type="Script" uid="uid://bm65yisrcqygr" path="res://Scripts/Global/LevelManagement.gd" id="2_maf8m"]
+[ext_resource type="Script" uid="uid://s8xtgj22c7b4" path="res://Scripts/camera_2d.gd" id="3_maf8m"]
 [ext_resource type="Shader" uid="uid://d4dqy4pmgrfrg" path="res://Shader/VHS.gdshader" id="9_m1efj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mai8y"]
@@ -13,14 +13,26 @@ shader_parameter/wiggle_speed = 25.0
 shader_parameter/smear = 0.26
 shader_parameter/blur_samples = 3
 
-[node name="MainScene" type="Node2D"]
+[node name="MainScene" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_x6ack")
-player_scene = ExtResource("2_iacmt")
-camera_scene = ExtResource("3_iacmt")
+player = NodePath("Player")
 metadata/_edit_vertical_guides_ = [1817.0]
 metadata/_edit_horizontal_guides_ = [-496.0]
 
-[node name="LevelManagement" parent="." instance=ExtResource("4_iacmt")]
+[node name="LevelManagment" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("2_maf8m")
+camera = NodePath("../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player") groups=["room1", "room2"]]
+position = Vector2(2363, -327)
+zoom = Vector2(1.465, 1.465)
+script = ExtResource("3_maf8m")
+cursor_influence = null
+smooth_speed = null
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_iacmt")]
+position = Vector2(2354, -323)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -33,7 +45,6 @@ offset_left = 6.0
 offset_right = 1103.0
 offset_bottom = 620.0
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_iacmt")]
+[connection signal="room_change" from="LevelManagment" to="LevelManagment" method="_on_room_change"]
 
-[node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_iacmt")]
-player = NodePath("../CharacterBody2D")
+[editable path="Player"]

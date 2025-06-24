@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 @export var health: Node2D
-@export var bullet_damage = 30
+@export var bullet_damage : int = 30
 
-func _ready():
+
+func _ready() -> void:
 	SignalBus.bullet_hit.connect(_on_bullet_hit)
 	
 func _physics_process(delta: float) -> void:

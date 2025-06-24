@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://7u25dtmd150n"]
+
+[ext_resource type="Script" uid="uid://bu8ibd0m3u8cc" path="res://Scripts/test_level_2.gd" id="1_rmwo4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngg8j"]
+size = Vector2(618.009, 1079.93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtoos"]
+size = Vector2(101.892, 89.678)
+
+[node name="RoomLayout2" type="Node2D" groups=["room2"]]
+script = ExtResource("1_rmwo4")
+
+[node name="MainLevel" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -479.0
+offset_top = -794.0
+offset_right = -159.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.95265, 1.71401)
+color = Color(0.172144, 0.332662, 0.441978, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-167.918, -253.46)
+shape = SubResource("RectangleShape2D_ngg8j")
+disabled = true
+debug_color = Color(0.363083, 0.562586, 0.691909, 0.42)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-273.666, 364.558)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Door" type="ColorRect" parent="Area2D"]
+offset_left = -27.0611
+offset_top = -80.7398
+offset_right = 80.9389
+offset_bottom = 12.2602
+color = Color(0.1368, 0.451805, 0.349546, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(25.2055, -35.2376)
+shape = SubResource("RectangleShape2D_dtoos")

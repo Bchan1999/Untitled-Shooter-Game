@@ -60,18 +60,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(-3.8147e-06, -15)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("IdleCrate:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_cqrjx"]
 resource_name = "run_with_package_right"
@@ -124,18 +112,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("IdleCrate:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
 }
 
 [sub_resource type="Animation" id="Animation_khnq4"]
@@ -190,18 +166,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(26, -13), Vector2(26, -13)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("IdleCrate:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
 
 [sub_resource type="Animation" id="Animation_vgqql"]
 resource_name = "run_right"
@@ -218,30 +182,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [1, 2, 3, 4, 5, 6, 7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("IdleCrate:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, false]
 }
 
 [sub_resource type="Animation" id="Animation_xo8ps"]
@@ -270,18 +210,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("IdleCrate:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x3wgy"]
@@ -375,8 +303,10 @@ anim = NodePath("AnimationPlayer")
 libraries = {
 &"": SubResource("AnimationLibrary_x3wgy")
 }
+autoplay = "run_with_package_right"
 
 [node name="IdleCrate" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-3.8147e-06, -15)
 scale = Vector2(0.680003, 0.680003)
 texture = ExtResource("3_khnq4")

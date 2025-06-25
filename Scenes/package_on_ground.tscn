@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cw4dltf3ujbio" path="res://Scripts/packages.gd" id="1_wvags"]
 [ext_resource type="Texture2D" uid="uid://dc7j1ukjrl0a0" path="res://kenney_sokoban-pack/PNG/Default size/Crates/crate_02.png" id="2_8o66u"]
-[ext_resource type="Texture2D" uid="uid://raamamheneh5" path="res://Assets/idle_crate.png" id="3_84xjq"]
-[ext_resource type="Texture2D" uid="uid://boea8s8yfc237" path="res://Assets/crate_01.png" id="4_jjf1w"]
-[ext_resource type="Texture2D" uid="uid://pbqhv6j76u4q" path="res://Assets/crate_02.png" id="5_tv5w0"]
+[ext_resource type="Texture2D" uid="uid://raamamheneh5" path="res://Assets/Package/idle_crate.png" id="3_84xjq"]
+[ext_resource type="Texture2D" uid="uid://boea8s8yfc237" path="res://Assets/Package/crate_01.png" id="4_jjf1w"]
+[ext_resource type="Texture2D" uid="uid://pbqhv6j76u4q" path="res://Assets/Package/crate_02.png" id="5_tv5w0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhvqu"]
 size = Vector2(32, 31)

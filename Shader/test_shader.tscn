@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dd38h40m3uwlg"]
+[gd_scene load_steps=18 format=3 uid="uid://dd38h40m3uwlg"]
 
 [ext_resource type="Shader" uid="uid://k138v4nvyoi7" path="res://Shader/test.gdshader" id="1_gaecu"]
 [ext_resource type="Texture2D" uid="uid://dubkflltfnf3x" path="res://test_image.svg" id="2_b2hsv"]
@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cwqckv0doxuja" path="res://HeadPic.JPG" id="6_5kufe"]
 [ext_resource type="Shader" uid="uid://txk31kctkhlw" path="res://Shader/gunReticle.gdshader" id="6_17rlb"]
 [ext_resource type="Script" uid="uid://d1lcnyym3sgnf" path="res://Shader/gunReticle.gd" id="7_4wptw"]
-[ext_resource type="Shader" uid="uid://bx5hth4ja0xrl" path="res://Shader/pixel.gdshader" id="8_ka3v7"]
+[ext_resource type="Shader" uid="uid://dd7ahmp482j2t" path="res://Shader/test_shader.gdshader" id="8_4wptw"]
+[ext_resource type="Texture2D" uid="uid://dxpagvaw04xlc" path="res://Assets/NPC/woman/Untitled_Artwork-1 (1).png" id="10_4wptw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0bp8k"]
 shader = ExtResource("1_gaecu")
@@ -46,10 +47,23 @@ shader_parameter/circle_thickness = 0.01
 shader_parameter/center_dot_size = 0.005
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0m6j8"]
-render_priority = 0
-shader = ExtResource("8_ka3v7")
+shader = ExtResource("8_4wptw")
+shader_parameter/outline_thickness = 0.002
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/color_levels = 8.0
+shader_parameter/halftone_scale = 2.0
+shader_parameter/halftone_strength = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ka3v7"]
+shader = ExtResource("8_4wptw")
+shader_parameter/outline_thickness = 0.002
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/color_levels = 8.0
+shader_parameter/halftone_scale = 2.0
+shader_parameter/halftone_strength = 0.3
 
 [node name="Test Shader" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-26.0, 15.0]
 
 [node name="GoldWater" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0bp8k")
@@ -97,3 +111,8 @@ material = SubResource("ShaderMaterial_0m6j8")
 position = Vector2(105, 30)
 scale = Vector2(0.0597223, 0.0597223)
 texture = ExtResource("6_5kufe")
+
+[node name="UntitledArtwork-1(1)" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ka3v7")
+position = Vector2(-262, -443)
+texture = ExtResource("10_4wptw")

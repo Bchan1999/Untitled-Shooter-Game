@@ -3,18 +3,17 @@
 [ext_resource type="Script" uid="uid://bcjwgvntycs2r" path="res://Scripts/main_scene.gd" id="1_x6ack"]
 [ext_resource type="PackedScene" uid="uid://k476e557gjom" path="res://Scenes/Characters/player.tscn" id="2_iacmt"]
 [ext_resource type="PackedScene" uid="uid://b6e6fuxradvm1" path="res://Scenes/camera_2d.tscn" id="3_iacmt"]
-[ext_resource type="PackedScene" uid="uid://0n34nubasb6d" path="res://Scenes/room_layout_1.tscn" id="5_6ev3c"]
 [ext_resource type="Shader" uid="uid://wgoodkd6r6eo" path="res://Shader/PhosphorTrail_VectorDisplay.gdshader" id="5_iacmt"]
 [ext_resource type="PackedScene" uid="uid://c6ssi6l2ufe34" path="res://Scenes/package_on_ground.tscn" id="6_6ev3c"]
+[ext_resource type="PackedScene" uid="uid://cjr7pcpwpew57" path="res://Scenes/level_management.tscn" id="6_maf8m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mai8y"]
 shader = ExtResource("5_iacmt")
-shader_parameter/phosphor_decay = 0.85
-shader_parameter/phosphor_intensity = 1.0
-shader_parameter/edge_intensity = 2.0
-shader_parameter/edge_color = Color(0, 1, 0.2, 1)
-shader_parameter/flicker_speed = 2.0
-shader_parameter/wobble_amount = 0.002
+shader_parameter/outline_thickness = 0.002
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/color_levels = 8.0
+shader_parameter/halftone_scale = 2.0
+shader_parameter/halftone_strength = 0.3
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_x6ack")
@@ -23,30 +22,26 @@ camera_scene = ExtResource("3_iacmt")
 metadata/_edit_vertical_guides_ = [-890.0, 8976.0]
 metadata/_edit_horizontal_guides_ = [-489.0, 6479.0]
 
-[node name="Map Placeholder" type="ColorRect" parent="."]
-offset_left = -905.0
-offset_top = -472.0
-offset_right = 8942.0
-offset_bottom = 6464.0
-color = Color(0.48902, 0.391925, 0.398861, 1)
-
-[node name="RoomLayout1" parent="Map Placeholder" instance=ExtResource("5_6ev3c")]
-position = Vector2(914, 467)
+[node name="LevelManagement" parent="." node_paths=PackedStringArray("camera", "player") instance=ExtResource("6_maf8m")]
+camera = NodePath("../Camera2D")
+player = NodePath("../CharacterBody2D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 scale = Vector2(1.74, 1.74)
 transform = Transform2D(1.74, 0, 0, 1.74, 0, 0)
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
 material = SubResource("ShaderMaterial_mai8y")
 offset_left = 6.0
 offset_right = 1103.0
 offset_bottom = 620.0
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_iacmt")]
+position = Vector2(-330, -310)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_iacmt")]
+process_callback = 0
 player = NodePath("../CharacterBody2D")
 
 [node name="Package" parent="." instance=ExtResource("6_6ev3c")]

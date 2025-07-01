@@ -28,7 +28,7 @@ offset_right = 11.0
 offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3.48815, 3.06185)
+scale = Vector2(9.54182, 8.37568)
 color = Color(0.366409, 0.296021, 0.280095, 1)
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
@@ -46,27 +46,15 @@ position = Vector2(25.2055, -35.2376)
 shape = SubResource("RectangleShape2D_iti4p")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(376.274, 224.007)
-scale = Vector2(1.78275, 1.72273)
+position = Vector2(1804.89, 1097.05)
+scale = Vector2(4.89981, 5.13595)
 navigation_polygon = SubResource("NavigationPolygon_jkl3w")
 
 [node name="Slow Enemy" parent="." instance=ExtResource("2_rwer3")]
-position = Vector2(-250.617, 7.36006)
-
-[node name="Slow Enemy2" parent="." instance=ExtResource("2_rwer3")]
-position = Vector2(-78.66, 118.181)
-
-[node name="Slow Enemy3" parent="." instance=ExtResource("2_rwer3")]
-position = Vector2(63.8911, -148.031)
-
-[node name="Slow Enemy4" parent="." instance=ExtResource("2_rwer3")]
-position = Vector2(7.89938, 45.4186)
+position = Vector2(2972.05, 852.257)
 
 [node name="SpawnBegin" type="Marker2D" parent="."]
-position = Vector2(524.746, 314.176)
-
-[node name="Slow Enemy5" parent="." instance=ExtResource("2_rwer3")]
-position = Vector2(-121.243, -83.6258)
+position = Vector2(2225.81, 862.095)
 
 [node name="Package" parent="." instance=ExtResource("3_jkl3w")]
 position = Vector2(884.382, 472.952)

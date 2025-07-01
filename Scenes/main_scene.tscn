@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://sumxdh70ojpb"]
 
-[ext_resource type="Script" uid="uid://bcjwgvntycs2r" path="res://Scripts/main_scene.gd" id="1_x6ack"]
+[ext_resource type="Script" uid="uid://bcjwgvntycs2r" path="res://Scripts/Global/main_scene.gd" id="1_x6ack"]
 [ext_resource type="PackedScene" uid="uid://k476e557gjom" path="res://Scenes/Characters/player.tscn" id="2_iacmt"]
 [ext_resource type="PackedScene" uid="uid://b6e6fuxradvm1" path="res://Scenes/camera_2d.tscn" id="3_iacmt"]
 [ext_resource type="Shader" uid="uid://wgoodkd6r6eo" path="res://Shader/PhosphorTrail_VectorDisplay.gdshader" id="5_iacmt"]
@@ -37,6 +37,8 @@ offset_right = 1103.0
 offset_bottom = 620.0
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_iacmt")]
+position = Vector2(2837, -1004)
+zoom = Vector2(0.725, 0.725)
 process_callback = 0
 player = NodePath("../Player")
 

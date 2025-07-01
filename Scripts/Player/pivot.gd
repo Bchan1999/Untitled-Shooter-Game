@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var marker : Marker2D
-@export var bullet : Sprite2D
+@export var bullet : AnimatedSprite2D
 
 func get_marker2d_global_position() -> Vector2:
 	return marker.global_position

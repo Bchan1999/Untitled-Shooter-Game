@@ -1,21 +1,25 @@
 extends State
 class_name PlayerNoCarry
 
-@export var player: CharacterBody2D
 @export var anim : AnimationPlayer
 var pickup_flag = false
 
 func Enter():
-	anim.play("run_right")
+	anim.play("run")
 	
 func Update(delta: float):
+		#
+	#if Input.is_action_just_pressed("left") == false && Input.is_action_just_pressed("right") == false:
+		#anim.play("idle_right")
+		#
 	if Input.is_action_pressed("right"):
-		anim.play("run_right")
+		anim.play("run")
 		#$AnimatedSprite2D.flip_h = false
 		#$IdleCrate.flip_h = false
 	if Input.is_action_pressed("left"):
-		anim.play("run_left")
+		anim.play("run")
 		
+
 	if Input.is_action_just_pressed("pickup") and pickup_flag == true:
 		pickup()
 		

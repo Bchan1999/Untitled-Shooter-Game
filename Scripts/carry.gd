@@ -1,7 +1,6 @@
 extends State
 class_name PlayerCarry
 
-@export var player: CharacterBody2D
 @export var anim : AnimationPlayer
 
 func Enter():

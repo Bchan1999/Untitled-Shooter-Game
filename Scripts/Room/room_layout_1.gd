@@ -11,9 +11,10 @@ func get_level_coord() -> Rect2:
 	return area.shape.get_rect()
 	
 func get_spawn_point() -> Vector2:
-	return spawn_point.new().global_position
+	return spawn_point.global_position
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("you entered me")
-	SignalBus.emit_room_change("room2")
-	queue_free()
+	if body.is_in_group('player'):	
+		print("you entered me")
+		SignalBus.emit_room_change("room2")
+		queue_free()

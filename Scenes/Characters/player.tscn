@@ -1,21 +1,57 @@
-[gd_scene load_steps=27 format=3 uid="uid://k476e557gjom"]
+[gd_scene load_steps=40 format=3 uid="uid://k476e557gjom"]
 
 [ext_resource type="Script" uid="uid://jqc0lhvbnybp" path="res://Scripts/player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://dlf4iv3o58ly2" path="res://Assets/Alien_Character/alienprototype/Untitled_Artwork-15.png" id="3_15c3i"]
 [ext_resource type="PackedScene" uid="uid://cshnxe6fhshal" path="res://Scenes/bullet.tscn" id="3_i3pqv"]
-[ext_resource type="Texture2D" uid="uid://raamamheneh5" path="res://Assets/Package/idle_crate.png" id="3_khnq4"]
+[ext_resource type="Texture2D" uid="uid://bq6n4xm1chn0l" path="res://Assets/Character/Idle/Untitled_Artwork-1 (2).png" id="4_cueqf"]
 [ext_resource type="Texture2D" uid="uid://gr830kvjiu44" path="res://Assets/Character/Untitled_Artwork (17).png" id="4_fkybt"]
 [ext_resource type="Texture2D" uid="uid://dbb1p23pj3oxr" path="res://Assets/Character/Untitled_Artwork (19).png" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://oajfb4msvbps" path="res://Scripts/pivot.gd" id="4_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://dsujxnace8e5p" path="res://Assets/Alien_Character/alienprototype/Untitled_Artwork-11.png" id="4_yt1oc"]
+[ext_resource type="Texture2D" uid="uid://1x2qf1kv6ti7" path="res://Assets/Character/Idle/Untitled_Artwork-2 (2).png" id="5_01b8d"]
+[ext_resource type="Texture2D" uid="uid://b5wvi02125ta" path="res://Assets/Alien_Character/alienprototype/Untitled_Artwork-12.png" id="5_jnx77"]
+[ext_resource type="Texture2D" uid="uid://b6qp7oatwvo8r" path="res://Assets/Alien_Character/alienprototype/Untitled_Artwork-13.png" id="6_hy8lp"]
+[ext_resource type="Texture2D" uid="uid://4phyrn4lapnn" path="res://Assets/Character/Idle/Untitled_Artwork-3 (1).png" id="6_xccyk"]
 [ext_resource type="Script" uid="uid://dk5avv31mapwx" path="res://Scripts/state_machine.gd" id="7_xo8ps"]
 [ext_resource type="Script" uid="uid://b0qei64u8karh" path="res://Scripts/no_carry.gd" id="8_xo8ps"]
 [ext_resource type="Script" uid="uid://d4iagmei83c5f" path="res://Scripts/carry.gd" id="9_xo8ps"]
+[ext_resource type="Texture2D" uid="uid://cq3x1syyu7vq1" path="res://Assets/Alien_Character/alienprototype/Untitled_Artwork-14.png" id="10_01b8d"]
 
-[sub_resource type="Animation" id="Animation_fkybt"]
+[sub_resource type="Animation" id="Animation_uxymp"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AlienGuy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AlienGuy:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Run"]
+}
+
+[sub_resource type="Animation" id="Animation_fepmq"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("AlienGuy:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +63,40 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/path = NodePath("AlienGuy:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Run"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ddhxa"]
+_data = {
+&"RESET": SubResource("Animation_fepmq"),
+&"run": SubResource("Animation_uxymp")
+}
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PinkGuy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PinkGuy:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -39,47 +108,93 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("IdleCrate:frame")
+tracks/2/path = NodePath("PinkGuy:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [&"run"]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("IdleCrate:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-3.8147e-06, -15)]
+
+[sub_resource type="Animation" id="Animation_dxpk4"]
+resource_name = "idle_left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PinkGuy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("IdleCrate:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PinkGuy:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PinkGuy:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_h1n2f"]
+resource_name = "idle_right"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PinkGuy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PinkGuy:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
 }
 
 [sub_resource type="Animation" id="Animation_xo8ps"]
 resource_name = "run_left"
 length = 0.6
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("PinkGuy:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -91,7 +206,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/path = NodePath("PinkGuy:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -103,14 +218,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("IdleCrate:visible")
+tracks/2/path = NodePath("PinkGuy:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, false]
+"values": [&"run"]
 }
 
 [sub_resource type="Animation" id="Animation_vgqql"]
@@ -120,7 +235,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("PinkGuy:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -132,7 +247,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/path = NodePath("PinkGuy:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -144,14 +259,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("IdleCrate:visible")
+tracks/2/path = NodePath("PinkGuy:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, false]
+"values": [&"run"]
 }
 
 [sub_resource type="Animation" id="Animation_khnq4"]
@@ -161,7 +276,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("PinkGuy:frame")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -173,7 +288,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/path = NodePath("PinkGuy:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -185,38 +300,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("IdleCrate:frame")
+tracks/2/path = NodePath("PinkGuy:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("IdleCrate:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(26, -13), Vector2(26, -13)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("IdleCrate:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
+"values": [&"run"]
 }
 
 [sub_resource type="Animation" id="Animation_cqrjx"]
@@ -226,7 +317,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("PinkGuy:frame")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -238,7 +329,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/path = NodePath("PinkGuy:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -250,48 +341,51 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("IdleCrate:position")
+tracks/2/path = NodePath("PinkGuy:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-3.8147e-06, -15), Vector2(-3.8147e-06, -15)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("IdleCrate:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("IdleCrate:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
+"values": [&"run"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x3wgy"]
 _data = {
 &"RESET": SubResource("Animation_fkybt"),
+&"idle_left": SubResource("Animation_dxpk4"),
+&"idle_right": SubResource("Animation_h1n2f"),
 &"run_left": SubResource("Animation_xo8ps"),
 &"run_right": SubResource("Animation_vgqql"),
 &"run_with_package_left": SubResource("Animation_khnq4"),
 &"run_with_package_right": SubResource("Animation_cqrjx")
 }
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3k74t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_15c3i")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_yt1oc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jnx77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hy8lp")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
 atlas = ExtResource("4_vgqql")
@@ -327,6 +421,20 @@ region = Rect2(2093, 0, 299, 419)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6t5aa"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cueqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_01b8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xccyk")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fkybt")
@@ -369,44 +477,55 @@ script = ExtResource("1_4flbx")
 bullet_scene = ExtResource("3_i3pqv")
 item_detect = NodePath("ItemDetect")
 arm = NodePath("ArmGun")
-anim = NodePath("AnimationPlayer")
+anim = NodePath("AP - AlienGuy")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AP - AlienGuy" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ddhxa")
+}
+
+[node name="AP - PinkGuy" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_x3wgy")
 }
 
-[node name="IdleCrate" type="Sprite2D" parent="."]
-position = Vector2(-3.8147e-06, -15)
-scale = Vector2(0.680003, 0.680003)
-texture = ExtResource("3_khnq4")
+[node name="AlienGuy" type="AnimatedSprite2D" parent="."]
+position = Vector2(41, -116)
+sprite_frames = SubResource("SpriteFrames_3k74t")
+animation = &"Run"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(10.9425, -2.83647)
-scale = Vector2(0.220351, 0.220351)
+[node name="PinkGuy" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(12, -2)
+scale = Vector2(0.21983, 0.21983)
 sprite_frames = SubResource("SpriteFrames_6t5aa")
 animation = &"run"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(11.9425, -5.83647)
+position = Vector2(1, 0)
+scale = Vector2(2.28033, 1.93538)
 shape = SubResource("CapsuleShape2D_khnq4")
 
 [node name="ArmGun" type="Node2D" parent="." node_paths=PackedStringArray("marker", "bullet")]
 position = Vector2(1.19209e-07, -1.19209e-07)
-rotation = 0.119573
+rotation = -0.00572163
 script = ExtResource("4_x3wgy")
 marker = NodePath("Marker2D")
-bullet = NodePath("BulletSpawn")
+bullet = NodePath("Alien Arm")
 
 [node name="BulletSpawn" type="Sprite2D" parent="ArmGun"]
+visible = false
 position = Vector2(22.0519, 1.30978)
 scale = Vector2(0.263316, 0.263316)
 texture = ExtResource("4_fkybt")
 
 [node name="Marker2D" type="Marker2D" parent="ArmGun"]
-position = Vector2(56.1966, -1.71582)
-rotation = -0.0488298
+position = Vector2(142.106, -18.1872)
+
+[node name="Alien Arm" type="Sprite2D" parent="ArmGun"]
+position = Vector2(92.9928, 1.53209)
+texture = ExtResource("10_01b8d")
 
 [node name="ItemDetect" type="Area2D" parent="."]
 visible = false
@@ -419,15 +538,13 @@ shape = SubResource("CircleShape2D_vgqql")
 script = ExtResource("7_xo8ps")
 initial_state = NodePath("NoCarry")
 
-[node name="NoCarry" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "anim")]
+[node name="NoCarry" type="Node" parent="StateMachine" node_paths=PackedStringArray("anim")]
 script = ExtResource("8_xo8ps")
-player = NodePath("../..")
-anim = NodePath("../../AnimationPlayer")
+anim = NodePath("../../AP - AlienGuy")
 
-[node name="Carry" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "anim")]
+[node name="Carry" type="Node" parent="StateMachine" node_paths=PackedStringArray("anim")]
 script = ExtResource("9_xo8ps")
-player = NodePath("../..")
-anim = NodePath("../../AnimationPlayer")
+anim = NodePath("../../AP - AlienGuy")
 
 [connection signal="area_entered" from="ItemDetect" to="StateMachine/NoCarry" method="_on_item_detect_area_entered"]
 [connection signal="area_exited" from="ItemDetect" to="StateMachine/NoCarry" method="_on_item_detect_area_exited"]

@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://sumxdh70ojpb"]
+[gd_scene load_steps=7 format=3 uid="uid://sumxdh70ojpb"]
 
 [ext_resource type="Script" uid="uid://bcjwgvntycs2r" path="res://Scripts/main_scene.gd" id="1_x6ack"]
 [ext_resource type="PackedScene" uid="uid://k476e557gjom" path="res://Scenes/Characters/player.tscn" id="2_iacmt"]
 [ext_resource type="PackedScene" uid="uid://b6e6fuxradvm1" path="res://Scenes/camera_2d.tscn" id="3_iacmt"]
 [ext_resource type="Shader" uid="uid://wgoodkd6r6eo" path="res://Shader/PhosphorTrail_VectorDisplay.gdshader" id="5_iacmt"]
-[ext_resource type="PackedScene" uid="uid://c6ssi6l2ufe34" path="res://Scenes/package_on_ground.tscn" id="6_6ev3c"]
 [ext_resource type="PackedScene" uid="uid://cjr7pcpwpew57" path="res://Scenes/level_management.tscn" id="6_maf8m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mai8y"]
@@ -24,7 +23,7 @@ metadata/_edit_horizontal_guides_ = [-489.0, 6479.0]
 
 [node name="LevelManagement" parent="." node_paths=PackedStringArray("camera", "player") instance=ExtResource("6_maf8m")]
 camera = NodePath("../Camera2D")
-player = NodePath("../CharacterBody2D")
+player = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -37,12 +36,9 @@ offset_left = 6.0
 offset_right = 1103.0
 offset_bottom = 620.0
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_iacmt")]
-position = Vector2(-330, -310)
-
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_iacmt")]
 process_callback = 0
-player = NodePath("../CharacterBody2D")
+player = NodePath("../Player")
 
-[node name="Package" parent="." instance=ExtResource("6_6ev3c")]
-position = Vector2(56, 145)
+[node name="Player" parent="." instance=ExtResource("2_iacmt")]
+position = Vector2(-442, -273)

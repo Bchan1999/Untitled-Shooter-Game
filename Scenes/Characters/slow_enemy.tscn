@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bwn838ijxtaso" path="res://kenney_sokoban-pack/PNG/Default size/Player/player_01.png" id="1_7k104"]
 [ext_resource type="Script" uid="uid://bjfbr6je17fvi" path="res://Scripts/Enemy/enemy.gd" id="2_afpow"]
 [ext_resource type="Texture2D" uid="uid://ckw8o0qxs1vn3" path="res://Assets/Enemy/Chase/Untitled_Artwork-1.png" id="2_po0sg"]
-[ext_resource type="Script" uid="uid://dk5avv31mapwx" path="res://Scripts/state_machine.gd" id="3_afpow"]
+[ext_resource type="Script" uid="uid://dk5avv31mapwx" path="res://Scripts/Common/state_machine.gd" id="3_afpow"]
 [ext_resource type="Texture2D" uid="uid://c57ldtrfwp5aw" path="res://Assets/Enemy/Chase/Untitled_Artwork-2.png" id="3_haro7"]
 [ext_resource type="Texture2D" uid="uid://inqcfpn245c8" path="res://Assets/Enemy/Chase/Untitled_Artwork-3.png" id="4_56vhr"]
 [ext_resource type="Script" uid="uid://bchfvl6t22k26" path="res://Scripts/Enemy/enemy_idle.gd" id="4_287tu"]
@@ -50,9 +50,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vt4ob"]
-radius = 17.181
-height = 56.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_caepe"]
 
 [sub_resource type="Animation" id="Animation_tk7xo"]
 length = 0.001
@@ -79,6 +77,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(21, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.772596, 0.772596)]
 }
 
 [sub_resource type="Animation" id="Animation_hgeoe"]
@@ -108,6 +130,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"chase"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(21, 0), Vector2(21, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.772596, 0.772596), Vector2(0.772596, 0.772596)]
 }
 
 [sub_resource type="Animation" id="Animation_m4x7e"]
@@ -158,7 +204,7 @@ texture = ExtResource("1_7k104")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="PlayerFar" type="Area2D" parent="." groups=["player"]]
-visible = false
+scale = Vector2(2.17901, 2.17901)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFar"]
 shape = SubResource("CircleShape2D_afpow")
@@ -188,14 +234,15 @@ animation = NodePath("../../AnimationPlayer")
 position = Vector2(2, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3.99998, 0)
+position = Vector2(21, 0)
+scale = Vector2(0.772596, 0.772596)
 sprite_frames = SubResource("SpriteFrames_m4x7e")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1)
-scale = Vector2(4.09617, 4.2526)
-shape = SubResource("CapsuleShape2D_vt4ob")
+position = Vector2(3, -9)
+scale = Vector2(6.42431, 6.66966)
+shape = SubResource("CapsuleShape2D_caepe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

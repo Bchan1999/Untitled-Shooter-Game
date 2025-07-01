@@ -4,7 +4,7 @@ class_name EnemyFollow
 var player
 var speed = 100
 
-var movement_speed: float = 100.0
+var movement_speed: float = 200.0
 var movement_target_position
 
 @export var navigation_agent: NavigationAgent2D

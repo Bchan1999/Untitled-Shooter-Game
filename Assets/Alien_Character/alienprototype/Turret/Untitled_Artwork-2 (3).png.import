@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ggoyq2h0j1q2"
-path="res://.godot/imported/Untitled_Artwork-2.png-94e77d89c03702ee4c7d6fe9f23c91ae.ctex"
+uid="uid://ch6ftmqb2itxt"
+path="res://.godot/imported/Untitled_Artwork-2 (3).png-dc5b75886fac9c444ba278a7dff57fd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Alien_Character/alienprototype/Untitled_Artwork-2.png"
-dest_files=["res://.godot/imported/Untitled_Artwork-2.png-94e77d89c03702ee4c7d6fe9f23c91ae.ctex"]
+source_file="res://Assets/Alien_Character/alienprototype/Turret/Untitled_Artwork-2 (3).png"
+dest_files=["res://.godot/imported/Untitled_Artwork-2 (3).png-dc5b75886fac9c444ba278a7dff57fd7.ctex"]
 
 [params]
 

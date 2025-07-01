@@ -5,7 +5,7 @@ const JUMP_VELOCITY = -400.0
 
 var num_of_packages: int = 0
 
-@export var move_speed := 200
+@export var move_speed := 300
 @export var bullet_scene : PackedScene
 @export var item_detect : Area2D
 @export var arm : Node2D
@@ -30,7 +30,7 @@ func _physics_process(delta):
 		
 func shoot():
 	var bullet = bullet_scene.instantiate()
-	bullet.position = $ArmGun/Marker2D.global_position
+	bullet.position = arm.get_node('Marker2D').global_position
 	bullet.rotation = arm.global_rotation  # Use pivot's rotation, not player's
 	get_tree().current_scene.add_child(bullet)
 	

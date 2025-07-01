@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bbu2742o3cw7f" path="res://Scripts/Room/room_layout_1.gd" id="1_iti4p"]
 [ext_resource type="PackedScene" uid="uid://cnyrq0nv5yndv" path="res://Scenes/Characters/slow_enemy.tscn" id="2_rwer3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_76v2p"]
-size = Vector2(899.013, 517.643)
+[ext_resource type="PackedScene" uid="uid://c6ssi6l2ufe34" path="res://Scenes/package_on_ground.tscn" id="3_jkl3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iti4p"]
 size = Vector2(101.892, 89.678)
@@ -14,10 +12,9 @@ vertices = PackedVector2Array(466.711, -274.289, 466.711, 276.328, -466.258, 277
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-474.789, -286.834, 476.71, -284.272, 476.71, 286.331, -476.288, 287.186)])
 
-[node name="RoomLayout1" type="Node2D" node_paths=PackedStringArray("area") groups=["room1"]]
-scale = Vector2(1.95265, 1.71401)
+[node name="RoomLayout1" type="Node2D" node_paths=PackedStringArray("spawn_point") groups=["room1"]]
 script = ExtResource("1_iti4p")
-area = NodePath("StaticBody2D/CollisionShape2D")
+spawn_point = NodePath("SpawnBegin")
 
 [node name="MainLevel" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -31,19 +28,8 @@ offset_right = 11.0
 offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.95265, 1.71401)
+scale = Vector2(3.48815, 3.06185)
 color = Color(0.366409, 0.296021, 0.280095, 1)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2.46015, 0.175673)
-scale = Vector2(0.999999, 1)
-shape = SubResource("RectangleShape2D_76v2p")
-disabled = true
-debug_color = Color(0.363083, 0.562586, 0.691909, 0.42)
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
 position = Vector2(-230.939, -297.26)
@@ -60,21 +46,29 @@ position = Vector2(25.2055, -35.2376)
 shape = SubResource("RectangleShape2D_iti4p")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(376.274, 224.007)
+scale = Vector2(1.78275, 1.72273)
 navigation_polygon = SubResource("NavigationPolygon_jkl3w")
 
 [node name="Slow Enemy" parent="." instance=ExtResource("2_rwer3")]
-position = Vector2(-375.065, -87.8065)
+position = Vector2(-250.617, 7.36006)
 
 [node name="Slow Enemy2" parent="." instance=ExtResource("2_rwer3")]
-position = Vector2(302.006, 144.535)
+position = Vector2(-78.66, 118.181)
 
 [node name="Slow Enemy3" parent="." instance=ExtResource("2_rwer3")]
-position = Vector2(-201.111, 207.745)
+position = Vector2(63.8911, -148.031)
 
 [node name="Slow Enemy4" parent="." instance=ExtResource("2_rwer3")]
-position = Vector2(309.504, -139.058)
+position = Vector2(7.89938, 45.4186)
 
 [node name="SpawnBegin" type="Marker2D" parent="."]
-position = Vector2(-78.5427, -97.72)
+position = Vector2(524.746, 314.176)
+
+[node name="Slow Enemy5" parent="." instance=ExtResource("2_rwer3")]
+position = Vector2(-121.243, -83.6258)
+
+[node name="Package" parent="." instance=ExtResource("3_jkl3w")]
+position = Vector2(884.382, 472.952)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

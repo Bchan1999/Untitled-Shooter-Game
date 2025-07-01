@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://7u25dtmd150n"]
+[gd_scene load_steps=5 format=3 uid="uid://7u25dtmd150n"]
 
 [ext_resource type="Script" uid="uid://bu8ibd0m3u8cc" path="res://Scripts/Room/room_layout_2.gd" id="1_rmwo4"]
+[ext_resource type="PackedScene" uid="uid://cnyrq0nv5yndv" path="res://Scenes/Characters/slow_enemy.tscn" id="2_y81ie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngg8j"]
 size = Vector2(618.009, 1079.93)
@@ -55,3 +56,6 @@ shape = SubResource("RectangleShape2D_dtoos")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-250.8, 233.2)
+
+[node name="Slow Enemy" parent="." instance=ExtResource("2_y81ie")]
+position = Vector2(-367.4, -165)

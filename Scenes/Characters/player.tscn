@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://k476e557gjom"]
+[gd_scene load_steps=54 format=3 uid="uid://k476e557gjom"]
 
 [ext_resource type="Script" uid="uid://jqc0lhvbnybp" path="res://Scripts/Player/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://b5d2cpyier3ux" path="res://Assets/Alien_Character/alienprototype/Turret/Untitled_Artwork-1.png" id="3_3k74t"]
@@ -19,11 +19,6 @@
 [ext_resource type="Script" uid="uid://b0qei64u8karh" path="res://Scripts/Player/no_carry.gd" id="8_xo8ps"]
 [ext_resource type="Script" uid="uid://d4iagmei83c5f" path="res://Scripts/Player/carry.gd" id="9_xo8ps"]
 [ext_resource type="Texture2D" uid="uid://cq3x1syyu7vq1" path="res://Assets/Alien_Character/alienprototype/Untitled_Artwork-14.png" id="10_01b8d"]
-[ext_resource type="Texture2D" uid="uid://byypbq4qokp44" path="res://Assets/Alien_Character/alienprototype/Turret/Untitled_Artwork-4.png" id="16_rv8bj"]
-[ext_resource type="Texture2D" uid="uid://c538lrbo21rnp" path="res://Assets/Alien_Character/alienprototype/Turret/Untitled_Artwork-5.png" id="17_inlw8"]
-[ext_resource type="Texture2D" uid="uid://bgx5cx87f2oxk" path="res://Assets/Alien_Character/alienprototype/Turret/Untitled_Artwork-6.png" id="18_f2s78"]
-[ext_resource type="Texture2D" uid="uid://cxrx4mh444au3" path="res://Assets/Alien_Character/alienprototype/Turret/Untitled_Artwork-7.png" id="19_hwltk"]
-[ext_resource type="Texture2D" uid="uid://b4exkwrnncttn" path="res://Assets/Alien_Character/alienprototype/Turret/Untitled_Artwork-8.png" id="20_hhnlt"]
 [ext_resource type="Script" uid="uid://rlxt2pucfnvd" path="res://Scripts/Player/turret.gd" id="25_v8iml"]
 
 [sub_resource type="Animation" id="Animation_fepmq"]
@@ -373,123 +368,15 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_rv8bj"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../TurretGun/Turret-head:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"shoot"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../TurretGun/Turret-head:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../TurretGun/Turret-head:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(28.8794, 21.1656)]
-}
 
 [sub_resource type="Animation" id="Animation_inlw8"]
 resource_name = "idle"
 length = 0.2
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../TurretGun/Turret-head:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../TurretGun/Turret-head:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"shoot"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../TurretGun/Turret-head:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(28.8794, 21.1656), Vector2(28.7821, 38.1653), Vector2(28.8794, 21.1656)]
-}
 
 [sub_resource type="Animation" id="Animation_v8iml"]
 resource_name = "shoot"
 length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../TurretGun/Turret-head:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [&"shoot", &"shoot", &"shoot"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../TurretGun/Turret-head:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../TurretGun/Turret-head:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(28.8794, 21.1656), Vector2(28.8794, 21.1656)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f2s78"]
 _data = {
@@ -524,42 +411,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [&"Idle_legs"]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TurretGun/Turret-head:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TurretGun/Turret-head:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("TurretGun/Turret-head:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(29.8908, 19.1713), Vector2(29.8908, 19.1713)]
-}
 
 [sub_resource type="Animation" id="Animation_2dmea"]
 resource_name = "run"
@@ -589,42 +440,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [&"Idle_legs"]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("TurretGun/Turret-head:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("TurretGun/Turret-head:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("TurretGun/Turret-head:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(28.8794, 21.1656), Vector2(30.8164, 32.1768), Vector2(28.8794, 21.1656)]
-}
 
 [sub_resource type="Animation" id="Animation_ojpki"]
 resource_name = "moving"
@@ -653,42 +468,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"Run_legs"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("TurretGun/Turret-head:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("TurretGun/Turret-head:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("TurretGun/Turret-head:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(28.8794, 21.1656), Vector2(30.8164, 32.1768), Vector2(28.8794, 21.1656)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lml76"]
@@ -830,37 +609,6 @@ animations = [{
 radius = 24.0
 height = 76.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6kewp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("16_rv8bj")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("16_rv8bj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_inlw8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_f2s78")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_hwltk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_hhnlt")
-}],
-"loop": true,
-"name": &"shoot",
-"speed": 5.0
-}]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_v8iml"]
 animations = [{
 "frames": [{
@@ -881,8 +629,8 @@ platform_floor_layers = 4278190081
 script = ExtResource("1_4flbx")
 bullet_scene = ExtResource("3_i3pqv")
 item_detect = NodePath("ItemDetect")
-arm = NodePath("TurretGun")
-anim = NodePath("AP - TurretLegs")
+arm = NodePath("AlienGunArm")
+anim = NodePath("AP - AlienGuy")
 
 [node name="AP - AlienGuy" type="AnimationPlayer" parent="."]
 libraries = {
@@ -906,12 +654,12 @@ libraries = {
 }
 
 [node name="Turret-legs" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(42, 20)
 sprite_frames = SubResource("SpriteFrames_ste30")
 animation = &"Idle_legs"
 
 [node name="AlienGuy" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(41, -116)
 sprite_frames = SubResource("SpriteFrames_3k74t")
 animation = &"Run"
@@ -925,41 +673,25 @@ animation = &"run"
 flip_h = true
 
 [node name="Turret_coll" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(36, 39)
 polygon = PackedVector2Array(-131, -220, -176, -150, -175, -89, -135, -44, -135, -14, -138, 59, -163, 114, -166, 188, -124, 189, 75, 192, 84, 132, 49, 62, 39, -4, 36, -40, 112, -38, 111, -102, 32, -103, 25, -143, -43, -158, -81, -218)
+disabled = true
 
 [node name="Alien_coll" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(1, 0)
 scale = Vector2(2.28033, 1.93538)
 shape = SubResource("CapsuleShape2D_khnq4")
-disabled = true
-
-[node name="TurretGun" type="Node2D" parent="." node_paths=PackedStringArray("marker", "bullet")]
-position = Vector2(-3.8147e-06, 1.90735e-06)
-rotation = -0.00572163
-script = ExtResource("4_x3wgy")
-marker = NodePath("Marker2D")
-bullet = NodePath("Turret-head")
-
-[node name="Marker2D" type="Marker2D" parent="TurretGun"]
-position = Vector2(156.146, -25.107)
-
-[node name="Turret-head" type="AnimatedSprite2D" parent="TurretGun"]
-position = Vector2(29.8908, 19.1713)
-rotation = 0.00572163
-sprite_frames = SubResource("SpriteFrames_6kewp")
-animation = &"idle"
 
 [node name="AlienGunArm" type="Node2D" parent="." node_paths=PackedStringArray("marker", "bullet")]
-visible = false
 position = Vector2(1.19209e-07, -1.19209e-07)
 rotation = -0.00572163
 script = ExtResource("4_x3wgy")
 marker = NodePath("Marker2D")
-bullet = NodePath("AlienArm")
+bullet = NodePath("Alien Arm")
 
-[node name="AlienArm" type="AnimatedSprite2D" parent="AlienGunArm"]
+[node name="PinkArm" type="AnimatedSprite2D" parent="AlienGunArm"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_v8iml")
 
 [node name="BulletSpawn" type="Sprite2D" parent="AlienGunArm"]
@@ -972,7 +704,6 @@ texture = ExtResource("4_fkybt")
 position = Vector2(142.106, -18.1872)
 
 [node name="Alien Arm" type="Sprite2D" parent="AlienGunArm"]
-visible = false
 position = Vector2(92.9928, 1.53209)
 texture = ExtResource("10_01b8d")
 
@@ -985,7 +716,7 @@ shape = SubResource("CircleShape2D_vgqql")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_xo8ps")
-initial_state = NodePath("Turret")
+initial_state = NodePath("NoCarry")
 
 [node name="NoCarry" type="Node" parent="StateMachine" node_paths=PackedStringArray("anim")]
 script = ExtResource("8_xo8ps")

@@ -46,7 +46,7 @@ position = Vector2(25.2055, -35.2376)
 shape = SubResource("RectangleShape2D_iti4p")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(1804.89, 1097.05)
+position = Vector2(1860.49, 1119.29)
 scale = Vector2(4.89981, 5.13595)
 navigation_polygon = SubResource("NavigationPolygon_jkl3w")
 

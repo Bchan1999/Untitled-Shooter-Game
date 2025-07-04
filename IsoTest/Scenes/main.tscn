@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://ce55sp2643r1g"]
+
+[ext_resource type="Script" uid="uid://cc0mk7p1nqt8d" path="res://IsoTest/Scenes/main.gd" id="1_pahu5"]
+[ext_resource type="Script" uid="uid://tbhqumm30cra" path="res://IsoTest/Scenes/node_3d.gd" id="2_pahu5"]
+[ext_resource type="PackedScene" uid="uid://bpl2wwkspu6c" path="res://IsoTest/Scenes/player.tscn" id="3_e1hiu"]
+[ext_resource type="PackedScene" uid="uid://vvvags82340e" path="res://IsoTest/Scenes/enemy.tscn" id="4_w0qby"]
+[ext_resource type="Texture2D" uid="uid://b22xow3tymknr" path="res://IsoTest/Assets/Untitled_Artwork.png" id="5_pahu5"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_pahu5"]
+vertices = PackedVector3Array(-24.5, 4.36447, -24.8393, -24.5, 4.36447, 24.1607, 24.5, 4.36447, 24.1607, 24.5, 4.36447, -24.8393)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lcym1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uo0iq"]
+size = Vector3(50, 1.43, 50)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_pahu5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 34.449, 6.6607)
+light_color = Color(0.268762, 0.631698, 0.622908, 1)
+light_energy = 1.171
+light_indirect_energy = 10.583
+light_volumetric_fog_energy = 1.515
+light_angular_distance = 25.0
+light_specular = 3.225
+light_bake_mode = 1
+sky_mode = 1
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_pahu5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.32947, -0.339302)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+mesh = SubResource("BoxMesh_lcym1")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_uo0iq")
+
+[node name="Node3D" type="Node3D" parent="."]
+script = ExtResource("2_pahu5")
+player_path = NodePath("../CharacterBody3D")
+
+[node name="Camera3D2" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.860742, 0.509041, 0, -0.509041, 0.860742, 0, 32.7206, 49.2411)
+projection = 1
+size = 8.974
+
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_e1hiu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.53294, 0)
+camera = NodePath("../Node3D/Camera3D2")
+
+[node name="Enemy" parent="." instance=ExtResource("4_w0qby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.54289, 3.00706)
+player_path = NodePath("../CharacterBody3D")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -9.04826e-08, 1, 0, -2.07, -4.37114e-08, 0, 4.2229, 0)
+texture = ExtResource("5_pahu5")

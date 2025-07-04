@@ -45,21 +45,32 @@ shape = SubResource("BoxShape3D_uo0iq")
 
 [node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("2_pahu5")
-player_path = NodePath("../CharacterBody3D")
+player_path = NodePath("../Player")
 
 [node name="Camera3D2" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.860742, 0.509041, 0, -0.509041, 0.860742, 0, 32.7206, 49.2411)
 projection = 1
 size = 8.974
 
-[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_e1hiu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.53294, 0)
-camera = NodePath("../Node3D/Camera3D2")
-
 [node name="Enemy" parent="." instance=ExtResource("4_w0qby")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.54289, 3.00706)
-player_path = NodePath("../CharacterBody3D")
+player_path = NodePath("../Player")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="DistortedBackground" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -9.04826e-08, 1, 0, -2.07, -4.37114e-08, 0, 4.2229, 0)
 texture = ExtResource("5_pahu5")
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_e1hiu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.58452, 0)
+camera = NodePath("../Node3D/Camera3D2")
+
+[node name="Enemy3" parent="." instance=ExtResource("4_w0qby")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 5, 0)
+player_path = NodePath("../Player")
+
+[node name="Enemy2" parent="." instance=ExtResource("4_w0qby")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, 0)
+player_path = NodePath("../Player")

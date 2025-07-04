@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpl2wwkspu6c"]
+[gd_scene load_steps=8 format=3 uid="uid://bpl2wwkspu6c"]
 
 [ext_resource type="Script" uid="uid://b5mu3106vakik" path="res://character_body_3d.gd" id="1_ur8fr"]
+[ext_resource type="PackedScene" uid="uid://c5cmbjm4kel8c" path="res://IsoTest/Scenes/bullet.tscn" id="2_3c2u0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfpmb"]
 albedo_color = Color(0.477378, 0.5921, 0.625368, 1)
@@ -28,6 +29,7 @@ albedo_color = Color(0.826169, 0.170702, 0.627752, 1)
 [node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("gun_arm")]
 script = ExtResource("1_ur8fr")
 gun_arm = NodePath("Marker3D")
+bullet_scene = ExtResource("2_3c2u0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_lfpmb")
@@ -45,4 +47,16 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_m8slw")
 
 [node name="BulletSpawn" type="Marker3D" parent="Marker3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.911983)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.0432885, 1.06222)
+
+[node name="TextHP" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -48.0
+offset_right = 84.0
+offset_bottom = -25.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Health: "

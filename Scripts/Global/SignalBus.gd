@@ -1,13 +1,13 @@
 extends Node
 
-signal bullet_hit(target) # Signal for when a bullet hits something
+signal bullet_hit(target, damage) # Signal for when a bullet hits something
 
 signal package_pickup()
 
 signal room_change(room)
 
-func emit_bullet_hit(target):
-	emit_signal("bullet_hit", target)
+func emit_bullet_hit(target, damage):
+	emit_signal("bullet_hit", target, damage)
 	
 func emit_package_pick_up():
 	emit_signal("package_pickup")

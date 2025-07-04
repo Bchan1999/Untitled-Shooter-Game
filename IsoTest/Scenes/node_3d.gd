@@ -22,9 +22,5 @@ func _physics_process(delta: float) -> void:
 		fixed_y,  # Keep the Y axis fixed
 		player_pos.z + 50
 	)
-	
-	print(target_position)
-	print("player pos")
-	print(player_pos.x, " , " ,player_pos.z)
 
 	global_transform.origin = current_pos.lerp(target_position, delta * follow_speed)

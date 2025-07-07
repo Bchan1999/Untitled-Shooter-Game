@@ -4,8 +4,9 @@ extends CharacterBody3D
 @export var gun_arm : Node3D
 @export var bullet_scene : PackedScene
 @export var health = 10
+@export var animated_gun : AnimationPlayer
 
-const SPEED = 10.0
+const SPEED = 7.0
 const ACCEL = 9.0
 const PUSHBACK = 8.0
 const JUMP_VELOCITY = 5.0
@@ -21,16 +22,21 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
+	if Input.is_action_pressed("shoot"):
+		if !animated_gun.is_playing():
+			animated_gun.play("recoil")
+			shoot()
+		
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "up" , "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	#Transform basis: [X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0)]
+
+	var target_velocity = direction * SPEED
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity = velocity.lerp(target_velocity, ACCEL * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)

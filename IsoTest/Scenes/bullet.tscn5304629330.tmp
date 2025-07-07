@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5cmbjm4kel8c"]
+
+[ext_resource type="Script" uid="uid://d2lt3wjrmnwkv" path="res://IsoTest/Scripts/bullet.gd" id="1_sma3q"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7ih1d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sma3q"]
+albedo_color = Color(0.544831, 0.539419, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_blkpb"]
+top_radius = 0.335
+bottom_radius = 5.632
+height = 11.025
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ih1d"]
+albedo_color = Color(0.545098, 0.541176, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_15i1w"]
+height = 2.59
+
+[node name="Area3D" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_sma3q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.075, -6.55671e-09, 2.86603e-16, 0, -3.27835e-09, -0.075, 6.55671e-09, -0.075, 3.27835e-09, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_7ih1d")
+surface_material_override/0 = SubResource("StandardMaterial3D_sma3q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-0.075, 1.94118e-23, -6.55671e-09, 0, 0.075, 2.22045e-16, 6.55671e-09, 2.22045e-16, -0.075, 0, 1.18123, -5.16331e-08)
+mesh = SubResource("CylinderMesh_blkpb")
+surface_material_override/0 = SubResource("StandardMaterial3D_7ih1d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.075, -6.55671e-09, 2.86603e-16, 0, -3.27835e-09, -0.075, 6.55671e-09, -0.075, 3.27835e-09, 0, 0, -0.0171655)
+shape = SubResource("CapsuleShape3D_15i1w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

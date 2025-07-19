@@ -18,7 +18,6 @@ func _physics_process(delta):
 	transform.origin += velocity * delta
 	
 	var how_far = start_pos.distance_to(global_position)
-	print(how_far)
 	
 	if how_far > distance:
 		queue_free()
@@ -26,7 +25,6 @@ func _physics_process(delta):
 	#if (global_position >)
 
 func _on_body_entered(body: Node3D) -> void:
-	print("hitting something")
 	SignalBus.emit_bullet_hit(body, 2)
 	particles.emitting = true
 	await get_tree().create_timer(1.0).timeout

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bonauuas0278r"]
+
+[ext_resource type="Script" uid="uid://dff38npppmwst" path="res://IsoTest/Scenes/fruit.gd" id="1_6qkcv"]
+[ext_resource type="Texture2D" uid="uid://b8uuvheub2ii4" path="res://IsoTest/Assets/Sprites/Fruit+.png" id="1_87pbx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_87pbx"]
+radius = 0.111579
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6qkcv"]
+radius = 0.150715
+
+[node name="Fruit" type="RigidBody3D" groups=["item"]]
+script = ExtResource("1_6qkcv")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.012
+billboard = 1
+texture = ExtResource("1_87pbx")
+hframes = 38
+vframes = 6
+frame = 47
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_87pbx")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_6qkcv")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2bayvk2wghr1"
-path="res://.godot/imported/Untitled_Boss_specular.png-d2369dd9ad4d7697f86e588e01453ab3.ctex"
+uid="uid://746054ipbge8"
+path="res://.godot/imported/zombie_Boss_specular.png-3fa02b0b85579143e443b901a8924284.ctex"
 metadata={
 "vram_texture": false
 }
@@ -13,8 +13,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://IsoTest/Assets/Untitled_Boss_specular.png"
-dest_files=["res://.godot/imported/Untitled_Boss_specular.png-d2369dd9ad4d7697f86e588e01453ab3.ctex"]
+source_file="res://IsoTest/Assets/Blender/zombie_Boss_specular.png"
+dest_files=["res://.godot/imported/zombie_Boss_specular.png-3fa02b0b85579143e443b901a8924284.ctex"]
 
 [params]
 

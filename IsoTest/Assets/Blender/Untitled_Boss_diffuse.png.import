@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b22xow3tymknr"
-path.s3tc="res://.godot/imported/Untitled_Artwork.png-1df3c168281e7514dbd8f7e1fe485ef1.s3tc.ctex"
+uid="uid://b8xryiyuqolbt"
+path.s3tc="res://.godot/imported/Untitled_Boss_diffuse.png-37de033d5e66a3f9a0c4188fe30a6dad.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "d6dcb50f00616bc487ddb3034e50100b"
+}
 
 [deps]
 
-source_file="res://IsoTest/Assets/Untitled_Artwork.png"
-dest_files=["res://.godot/imported/Untitled_Artwork.png-1df3c168281e7514dbd8f7e1fe485ef1.s3tc.ctex"]
+source_file="res://IsoTest/Assets/Blender/Untitled_Boss_diffuse.png"
+dest_files=["res://.godot/imported/Untitled_Boss_diffuse.png-37de033d5e66a3f9a0c4188fe30a6dad.s3tc.ctex"]
 
 [params]
 

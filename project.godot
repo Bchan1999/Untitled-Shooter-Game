@@ -35,6 +35,7 @@ window/stretch/mode="canvas_items"
 player=""
 room1=""
 room2=""
+item=""
 
 [input]
 

@@ -11,6 +11,8 @@ const ACCEL = 9.0
 const PUSHBACK = 8.0
 const JUMP_VELOCITY = 5.0
 
+var item_score
+
 
 func _physics_process(delta: float) -> void:
 	$TextHP.text = "Health: " + str(health)
@@ -31,12 +33,14 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "up" , "down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
 	#Transform basis: [X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0)]
+	#var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
 
 	var target_velocity = direction * SPEED
 	if direction:
 		velocity = velocity.lerp(target_velocity, ACCEL * delta)
+		#velocity = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -63,6 +67,7 @@ func _physics_process(delta: float) -> void:
 
 	# Apply rotation only on y-axis (full spectrum: -π to π)
 	gun_arm.rotation = Vector3(0, yaw, 0)
+	$Armature.rotation = Vector3(1.5, yaw, 0)
 
 	# Optional: Smooth rotation using lerp
 	# rotation.y = lerp_angle(rotation.y, yaw, 5.0 * delta)
@@ -79,4 +84,6 @@ func shoot () -> void:
 	
 func hit(damage, dir):
 	health -= damage
-	
+
+func item_absorbed():
+	pass

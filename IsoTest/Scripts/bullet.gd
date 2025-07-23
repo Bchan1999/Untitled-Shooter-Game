@@ -8,6 +8,7 @@ var velocity = Vector3.ZERO
 var start_pos = Vector2.ZERO
 @export var distance = 60
 @export var particles : GPUParticles3D
+@export var damage = 2
 
 func _ready() -> void:
 	start_pos = global_position
@@ -25,7 +26,7 @@ func _physics_process(delta):
 	#if (global_position >)
 
 func _on_body_entered(body: Node3D) -> void:
-	SignalBus.emit_bullet_hit(body, 2)
+	SignalBus.emit_bullet_hit(body, damage)
 	particles.emitting = true
 	await get_tree().create_timer(1.0).timeout
 	queue_free()

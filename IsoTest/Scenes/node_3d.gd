@@ -6,7 +6,7 @@ extends Node3D
 
 @onready var camera = $Camera3D2
 
-@export var randomStrength : float = 0.1
+@export var randomStrength : float = 0.3
 @export var shakeFade: float = 80.0
 
 var rng = RandomNumberGenerator.new()
@@ -15,8 +15,8 @@ var shake_strength : float = 0.0
 var player: Node3D
 
 func _ready():
-	
 	player = get_node(player_path)
+	SignalBus.bullet_hit.connect(bullet_hit)
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -37,8 +37,8 @@ func _physics_process(delta: float) -> void:
 
 	
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
-		apply_shake()
+	#if Input.is_action_just_pressed("shoot"):
+		#apply_shake()
 	
 	if shake_strength > 0:
 		shake_strength = lerpf(shake_strength,0,shakeFade * delta)
@@ -46,6 +46,8 @@ func _process(delta: float) -> void:
 		camera.h_offset = randomOffset().x
 		camera.v_offset = randomOffset().y
 
+func bullet_hit(target, self_damage):
+	apply_shake()
 	
 func apply_shake():
 	shake_strength = randomStrength

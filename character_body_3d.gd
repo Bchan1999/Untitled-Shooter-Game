@@ -1,10 +1,14 @@
 extends CharacterBody3D
 
-@export var camera : Camera3D
+@export_category("Gun")
 @export var gun_arm : Node3D
 @export var bullet_scene : PackedScene
-@export var health = 10
 @export var animated_gun : AnimationPlayer
+
+@export_category("Setup")
+@export var camera : Camera3D
+@export var health = 10
+
 
 const SPEED = 7.0
 const ACCEL = 9.0

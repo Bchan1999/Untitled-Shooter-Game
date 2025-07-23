@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b8uuvheub2ii4" path="res://IsoTest/Assets/Sprites/Fruit+.png" id="1_87pbx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_87pbx"]
-radius = 0.111579
+radius = 0.153833
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6qkcv"]
 radius = 0.150715

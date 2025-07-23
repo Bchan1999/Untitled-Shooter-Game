@@ -978,6 +978,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m8slw")
 [node name="BulletSpawn" type="Marker3D" parent="Marker3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.0432885, 0.818727)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Marker3D"]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, -0.52054, 0.0787008)
+light_energy = 6.084
+
 [node name="TextHP" type="Label" parent="."]
 anchors_preset = 2
 anchor_top = 1.0

@@ -1,12 +1,13 @@
-[gd_scene load_steps=36 format=3 uid="uid://ce55sp2643r1g"]
+[gd_scene load_steps=37 format=3 uid="uid://ce55sp2643r1g"]
 
 [ext_resource type="Script" uid="uid://cc0mk7p1nqt8d" path="res://IsoTest/Scenes/main.gd" id="1_pahu5"]
 [ext_resource type="Script" uid="uid://tbhqumm30cra" path="res://IsoTest/Scenes/node_3d.gd" id="2_pahu5"]
 [ext_resource type="PackedScene" uid="uid://bpl2wwkspu6c" path="res://IsoTest/Scenes/player.tscn" id="3_e1hiu"]
 [ext_resource type="Texture2D" uid="uid://dktx450od5ns3" path="res://IsoTest/Assets/World/Untitled_Artwork(2).png" id="3_pahu5"]
 [ext_resource type="Texture2D" uid="uid://co78dxnxlk2mc" path="res://IsoTest/Assets/World/ground_normal_map.png" id="3_w0qby"]
-[ext_resource type="PackedScene" uid="uid://c0ti8si0acwtx" path="res://IsoTest/Scenes/demon_hub.tscn" id="5_e1hiu"]
+[ext_resource type="Script" uid="uid://dcpg6epc5c203" path="res://IsoTest/Scenes/exit.gd" id="7_lcym1"]
 [ext_resource type="PackedScene" uid="uid://bonauuas0278r" path="res://IsoTest/Scenes/fruit.tscn" id="7_w0qby"]
+[ext_resource type="Script" uid="uid://bpk50i1a401lw" path="res://IsoTest/Scripts/level_managment.gd" id="8_lcym1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcym1"]
 normal_enabled = true
@@ -160,9 +161,6 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MainPlatform/StaticBody3D"]
 shape = SubResource("CylinderShape3D_pahu5")
 
-[node name="DemonHUB" parent="." instance=ExtResource("5_e1hiu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71304, 0)
-
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6958, 3, -98.174)
 
@@ -264,9 +262,13 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_0td0f")
 
 [node name="Exit" type="Area3D" parent="."]
+script = ExtResource("7_lcym1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Exit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0739, 2.45777, 0)
 shape = SubResource("BoxShape3D_8uo6e")
+
+[node name="LevelManagment" type="Node3D" parent="."]
+script = ExtResource("8_lcym1")
 
 [editable path="Fruit"]

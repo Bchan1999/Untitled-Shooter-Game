@@ -221,6 +221,7 @@ initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animation")]
 script = ExtResource("4_287tu")
+move_speed = null
 enemy = NodePath("../..")
 animation = NodePath("../../AnimationPlayer")
 

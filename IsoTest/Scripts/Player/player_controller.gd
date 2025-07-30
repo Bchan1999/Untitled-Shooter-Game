@@ -22,7 +22,7 @@ var item_score
 var input_dir := Vector2(0,0)
 
 func _ready() -> void:
-	var states : Array[State] = [PlayerIdleState.new(self), PlayerMovementState.new(self)]
+	var states : Array[State] = [PlayerIdleState.new(self), PlayerMovementState.new(self), PlayerAttackState.new(self)]
 	state_machine.start_machine(states)
 
 func _physics_process(delta: float) -> void:
@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
-	#if Input.is_action_pressed("shoot"):
+
 		#anim_player.play("QUICK_ATTACK")
 		#if !animated_gun.is_playing():
 			#animated_gun.play("recoil")

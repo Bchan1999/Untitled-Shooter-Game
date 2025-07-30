@@ -34,3 +34,9 @@ func physics_update(delta: float) -> void:
 		
 	if player.velocity == Vector3(0,0,0):
 		state_machine.transition("PlayerIdleState")
+		
+	if Input.is_action_pressed("shoot"):
+		state_machine.transition("PlayerAttackState")
+		
+func exit():
+	player.velocity = Vector3(0,0,0)

@@ -75,7 +75,7 @@ size = Vector3(6.015, 7.48, 1)
 
 [sub_resource type="Environment" id="Environment_e1hiu"]
 background_mode = 1
-background_color = Color(0.235667, 0.185008, 0.169753, 1)
+background_color = Color(0.190214, 0.349334, 0.499644, 1)
 sky = SubResource("Sky_e1hiu")
 glow_enabled = true
 
@@ -106,7 +106,7 @@ script = ExtResource("1_pahu5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 34.449, 6.6607)
-light_color = Color(0.64797, 0.551697, 0.539337, 1)
+light_color = Color(0.736729, 0.727573, 0.759878, 1)
 light_energy = 1.171
 light_indirect_energy = 10.583
 light_volumetric_fog_energy = 1.515

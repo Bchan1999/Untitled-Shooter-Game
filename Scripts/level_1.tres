@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelType" load_steps=3 format=3 uid="uid://kqmg2ui4tmq3"]
+
+[ext_resource type="Script" uid="uid://doru0y5txdjgb" path="res://Scripts/level_type.gd" id="1_fnahj"]
+[ext_resource type="PackedScene" uid="uid://c4x70m7a1mjpg" path="res://Scenes/fighting_area.tscn" id="1_ulb38"]
+
+[resource]
+script = ExtResource("1_fnahj")
+level_name = "FightingArea"
+path = ExtResource("1_ulb38")
+metadata/_custom_type_script = "uid://doru0y5txdjgb"

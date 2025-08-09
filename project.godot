@@ -17,7 +17,7 @@ config/icon="res://test_image.svg"
 
 [autoload]
 
-SignalBus="*res://IsoTest/Scripts/Global/SignalBus.gd"
+SignalBus="*res://Scripts/Global/SignalBus.gd"
 
 [debug]
 

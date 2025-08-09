@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5cmbjm4kel8c"]
+
+[ext_resource type="Script" uid="uid://d2lt3wjrmnwkv" path="res://Scripts/bullet.gd" id="1_sma3q"]
+[ext_resource type="Material" uid="uid://dq4wauxu1oons" path="res://Material/bullet.tres" id="2_7ih1d"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7ih1d"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_blkpb"]
+top_radius = 0.335
+bottom_radius = 5.632
+height = 11.025
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_15i1w"]
+height = 2.59
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ih1d"]
+albedo_color = Color(0.587237, 0.624607, 0.791748, 1)
+emission_enabled = true
+emission = Color(0.847059, 0.156863, 0.815686, 1)
+emission_energy_multiplier = 8.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ih1d"]
+emission_shape_offset = Vector3(0, 0, 1)
+spread = 30.938
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_blkpb"]
+size = Vector3(0.08, 0.08, 0.08)
+
+[node name="Area3D" type="Area3D" node_paths=PackedStringArray("particles")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_sma3q")
+particles = NodePath("GPUParticles3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.075, -6.55671e-09, 2.86603e-16, 0, -3.27835e-09, -0.075, 6.55671e-09, -0.075, 3.27835e-09, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_7ih1d")
+surface_material_override/0 = ExtResource("2_7ih1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-0.075, 1.94118e-23, -6.55671e-09, 0, 0.075, 2.22045e-16, 6.55671e-09, 2.22045e-16, -0.075, 0, 1.18123, -5.16331e-08)
+mesh = SubResource("CylinderMesh_blkpb")
+surface_material_override/0 = ExtResource("2_7ih1d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.075, -6.55671e-09, 2.86603e-16, 0, -3.27835e-09, -0.075, 6.55671e-09, -0.075, 3.27835e-09, 0, 0, -0.0171655)
+shape = SubResource("CapsuleShape3D_15i1w")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.23687)
+material_override = SubResource("StandardMaterial3D_7ih1d")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7ih1d")
+draw_pass_1 = SubResource("BoxMesh_blkpb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

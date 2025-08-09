@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0ti8si0acwtx"]
+
+[ext_resource type="Script" uid="uid://cyjv346yhcny4" path="res://demon_hub.gd" id="1_isgvu"]
+[ext_resource type="Texture2D" uid="uid://ds0j6b0f51q0" path="res://Assets/Keyboard/Keyboard Letters and Symbols.png" id="2_pv6c1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pv6c1"]
+radius = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_1tn35"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jybx"]
+albedo_color = Color(0.889193, 0.403451, 0.389299, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k3hdt"]
+radius = 4.0
+
+[sub_resource type="Animation" id="Animation_1tn35"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pv6c1"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_2jybx"]
+resource_name = "toggle_talk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3hdt"]
+_data = {
+&"RESET": SubResource("Animation_1tn35"),
+&"idle": SubResource("Animation_pv6c1"),
+&"toggle_talk": SubResource("Animation_2jybx")
+}
+
+[node name="DemonHUB" type="StaticBody3D" node_paths=PackedStringArray("anim")]
+script = ExtResource("1_isgvu")
+anim = NodePath("AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_pv6c1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_1tn35")
+surface_material_override/0 = SubResource("StandardMaterial3D_2jybx")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_k3hdt")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9834, 0)
+visible = false
+pixel_size = 0.045
+billboard = 1
+render_priority = 1
+texture = ExtResource("2_pv6c1")
+hframes = 8
+vframes = 14
+frame = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k3hdt")
+}
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

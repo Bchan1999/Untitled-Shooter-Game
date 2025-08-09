@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpe3670wisdxj"]
+
+[ext_resource type="Script" uid="uid://dms3yw7r6nc1y" path="res://Scripts/Global/level_transition.gd" id="1_30st1"]
+
+[node name="Level Transition" type="Node3D"]
+script = ExtResource("1_30st1")

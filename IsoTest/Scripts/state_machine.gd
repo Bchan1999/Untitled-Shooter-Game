@@ -1,9 +1,6 @@
 extends Node
 class_name StateMachine
 
-@export var is_log_enabled: bool = false
-@export var anim_player : AnimationPlayer
-
 var current_state : State
 var states : Dictionary = {}
 var _parent_node_name : String
@@ -17,8 +14,6 @@ func start_machine(init_states: Array[State]) -> void:
 	current_state = init_states[0]
 	current_state.enter()
 	
-	if is_log_enabled:
-		print("[%s]: Entering state \"%s\"" % [_parent_node_name, current_state.get_state_name()])
 
 #func _ready():
 	#for child in get_children():
@@ -40,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		current_state.physics_update(delta)
 
 func transition(new_state_name: String):
+	print(new_state_name)
 	var new_state: State = states.get(new_state_name)
 	var current_state_name = current_state.get_state_name()
 	
@@ -48,15 +44,7 @@ func transition(new_state_name: String):
 		push_error("An attempt has been made to transition to a non-existent state (%s)." % new_state_name)
 	elif new_state != current_state:
 		current_state.exit()
-		
-		if is_log_enabled:
-			print("[%s]: Exiting state \"%s\"" % [_parent_node_name, current_state.get_state_name()])
-
-		current_state = states[new_state.get_state_name()]
-		
-		if is_log_enabled:
-			print("[%s]: Entering state \"%s\"" % [_parent_node_name, current_state.get_state_name()])
-
+		current_state = new_state
 		
 		current_state.enter()
 	else:

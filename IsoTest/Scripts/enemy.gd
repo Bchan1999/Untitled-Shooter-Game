@@ -61,7 +61,6 @@ func hit (target, self_damage):
 		curr_health -= self_damage
 		curr_health = clampf(curr_health, 0, MAX_HEALTH)
 		if curr_health <= 0 && alive:
-			print(curr_health)
 			anim_tree.set("parameters/conditions/death", true)
 			$Timer.start()
 			spawn_fruit()

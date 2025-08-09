@@ -14,11 +14,10 @@ func get_state_name() -> String:
 	
 func physics_update(delta: float) -> void:
 	anim_player.play(animation)
-
+	
 	var direction := Vector3(player.input_dir.x, 0, player.input_dir.y).normalized()
 	var angleCoord = Vector2(player.input_dir.x, -player.input_dir.y)
 	var angle = angleCoord.angle()
-	print(angle)
 	
 
 	var target_velocity = direction * SPEED

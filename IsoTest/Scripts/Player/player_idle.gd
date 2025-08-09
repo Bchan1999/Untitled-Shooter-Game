@@ -12,8 +12,12 @@ func physics_update(delta: float) -> void:
 	if player.input_dir != Vector2(0,0):
 		state_machine.transition("PlayerMovementState")
 		
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		state_machine.transition("PlayerAttackState")
+		
+	if Input.is_action_pressed("block"):
+		state_machine.transition("PlayerBlockState")
+		
 	
 func Exit():
 	print("im doing something before exiting")

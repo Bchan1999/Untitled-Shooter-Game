@@ -4,6 +4,7 @@ class_name PlayerState
 @export var player: PlayerController
 @export var anim_player: AnimationPlayer
 @export var state_machine: StateMachine
+@export var player_skeleton : Skeleton3D
 
 func _init(player_controller: PlayerController) -> void:
 	player = player_controller

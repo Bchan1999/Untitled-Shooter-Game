@@ -6,10 +6,15 @@ class_name PlayerController
 #@export var bullet_scene : PackedScene
 #@export var animated_gun : AnimationPlayer
 @export_category("Setup")
-@export var camera : Camera3D
+#@export var camera : Camera3D
 @export var health = 10
 @export var anim_player : AnimationPlayer
 @export var state_machine : StateMachine
+
+@onready var weapon_loc = $Remy/Armature/Skeleton3D/HandAttach/Node3D/Sword/SwordArea/CollisionShape3D
+var mat2 = preload("res://IsoTest/Material/enemy_placeholder_hurt.tres")
+
+@export var timer : Timer
 
 
 const SPEED = 7.0
@@ -17,12 +22,15 @@ const ACCEL = 9.0
 const PUSHBACK = 8.0
 const JUMP_VELOCITY = 5.0
 
+var sword_damage = 5
+
 var item_score
 
 var input_dir := Vector2(0,0)
 
 func _ready() -> void:
-	var states : Array[State] = [PlayerIdleState.new(self), PlayerMovementState.new(self), PlayerAttackState.new(self)]
+	var states : Array[State] = [PlayerIdleState.new(self), PlayerMovementState.new(self), PlayerAttackState.new(self), PlayerBlockState.new(self)]
+	
 	state_machine.start_machine(states)
 
 func _physics_process(delta: float) -> void:
@@ -64,14 +72,14 @@ func _physics_process(delta: float) -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
 
 	# Project mouse position onto the character's y-level plane (e.g., y = global_position.y)
-	var from = camera.project_ray_origin(mouse_pos)
-	var ray_dir = camera.project_ray_normal(mouse_pos)
-	
+	#var from = camera.project_ray_origin(mouse_pos)
+	#var ray_dir = camera.project_ray_normal(mouse_pos)
+	#
 	# Calculate intersection with the plane at the character's y position
-	var plane_normal = Vector3.UP  # Plane normal (y-axis)
-	var plane_origin = Vector3(0, global_position.y, 0)  # Plane at character's y-level
-	var t = plane_normal.dot(plane_origin - from) / plane_normal.dot(ray_dir)
-	var target_point = from + ray_dir * t
+	#var plane_normal = Vector3.UP  # Plane normal (y-axis)
+	#var plane_origin = Vector3(0, global_position.y, 0)  # Plane at character's y-level
+	#var t = plane_normal.dot(plane_origin - from) / plane_normal.dot(ray_dir)
+	#var target_point = from + ray_dir * t
 
 	# Calculate direction to the target point
 	#direction = (target_point - global_position).normalized()
@@ -86,7 +94,6 @@ func _physics_process(delta: float) -> void:
 
 	# Optional: Smooth rotation using lerp
 	# rotation.y = lerp_angle(rotation.y, yaw, 5.0 * delta)
-
 	move_and_slide()
 	
 #func shoot () -> void:
@@ -102,3 +109,28 @@ func hit(damage, dir):
 
 func item_absorbed():
 	pass
+	
+func enable_sword_collision():
+	weapon_loc.disabled = false
+	
+func disable_sword_collision():
+	weapon_loc.disabled = true
+
+#func _on_sword_area_area_entered(area: Area3D) -> void:
+	#print("Signal from player", area)
+	#pass # Replace with function body.
+
+func _on_sword_area_body_entered(body: Node3D) -> void:
+	if body.has_method("this_thing_take_damage"):
+		body.this_thing_take_damage(sword_damage)
+		
+func player_take_damage(dmg):
+	timer.start()
+	print("ouchie")
+	var red = Color(1.0, 0.0, 0.0, 1.0)
+	$Remy/Armature/Skeleton3D/Body.set_surface_override_material(0, mat2)
+	print("taking damage")
+	#curr_health -= dmg
+	#curr_health = clampf(curr_health, 0, MAX_HEALTH)
+	#if curr_health <= 0:
+		#print("ME DEAD")

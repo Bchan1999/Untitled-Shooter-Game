@@ -1,3 +1,46 @@
-[gd_scene format=3 uid="uid://cqwvvs3by8al4"]
+[gd_scene load_steps=7 format=3 uid="uid://cqwvvs3by8al4"]
+
+[ext_resource type="Script" uid="uid://u3o8u1dd8s7v" path="res://Scripts/LevelTest/level_2_test.gd" id="1_3fnry"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3fnry"]
+size = Vector3(12.33, 0.59, 19.605)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nvgcr"]
+size = Vector3(5.765, 0.47, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r132a"]
+albedo_color = Color(0.417951, 0.484074, 0.365807, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nvgcr"]
+data = PackedVector3Array(-6.165, 0.295, 9.8025, 6.165, 0.295, 9.8025, -6.165, -0.295, 9.8025, 6.165, 0.295, 9.8025, 6.165, -0.295, 9.8025, -6.165, -0.295, 9.8025, 6.165, 0.295, -9.8025, -6.165, 0.295, -9.8025, 6.165, -0.295, -9.8025, -6.165, 0.295, -9.8025, -6.165, -0.295, -9.8025, 6.165, -0.295, -9.8025, 6.165, 0.295, 9.8025, 6.165, 0.295, -9.8025, 6.165, -0.295, 9.8025, 6.165, 0.295, -9.8025, 6.165, -0.295, -9.8025, 6.165, -0.295, 9.8025, -6.165, 0.295, -9.8025, -6.165, 0.295, 9.8025, -6.165, -0.295, -9.8025, -6.165, 0.295, 9.8025, -6.165, -0.295, 9.8025, -6.165, -0.295, -9.8025, 6.165, 0.295, 9.8025, -6.165, 0.295, 9.8025, 6.165, 0.295, -9.8025, -6.165, 0.295, 9.8025, -6.165, 0.295, -9.8025, 6.165, 0.295, -9.8025, -6.165, -0.295, 9.8025, 6.165, -0.295, 9.8025, -6.165, -0.295, -9.8025, 6.165, -0.295, 9.8025, 6.165, -0.295, -9.8025, -6.165, -0.295, -9.8025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3fnry"]
+size = Vector3(6.705, 1.825, 1)
 
 [node name="Level2Test" type="Node3D"]
+script = ExtResource("1_3fnry")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3fnry")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.2448)
+mesh = SubResource("BoxMesh_nvgcr")
+surface_material_override/0 = SubResource("StandardMaterial3D_r132a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nvgcr")
+
+[node name="Exit1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.1556)
+
+[node name="Exit" type="CollisionShape3D" parent="Exit1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.208, 0)
+shape = SubResource("BoxShape3D_3fnry")
+
+[node name="Spawn1" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.77781)
+
+[connection signal="body_entered" from="Exit1" to="." method="_on_exit_1_body_entered"]

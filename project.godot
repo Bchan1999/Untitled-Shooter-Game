@@ -18,6 +18,7 @@ config/icon="res://test_image.svg"
 [autoload]
 
 SignalBus="*res://Scripts/Global/SignalBus.gd"
+Spawnner="*res://Scripts/Global/spawnner.gd"
 
 [debug]
 
@@ -36,6 +37,7 @@ player=""
 room1=""
 room2=""
 item=""
+door=""
 
 [input]
 

@@ -4633,7 +4633,7 @@ _data = {
 radius = 0.933
 height = 3.321
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "state_machine") groups=["player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "state_machine") groups=["door", "player"]]
 script = ExtResource("1_8erm5")
 anim_player = NodePath("Remy/AnimationPlayer")
 state_machine = NodePath("StateMachine")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bpl2wwkspu6c"]
+[gd_scene load_steps=33 format=3 uid="uid://bpl2wwkspu6c"]
 
 [ext_resource type="Script" uid="uid://b5mu3106vakik" path="res://Scripts/Player/player_controller.gd" id="1_8erm5"]
 [ext_resource type="PackedScene" uid="uid://dg1impn4np33b" path="res://Assets/Remy/Remy.glb" id="2_f1ek2"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://t2xrnxb1eyrp" path="res://Scripts/Player/player_state.gd" id="8_h4iuc"]
 [ext_resource type="Script" uid="uid://1d45k4w67t4g" path="res://Scripts/Player/pick_axe_swing.gd" id="8_tx1dd"]
 [ext_resource type="PackedScene" uid="uid://cfxdb4x0ji7sm" path="res://Assets/pickaxe_lowpoly/scene.gltf" id="9_f1ek2"]
-[ext_resource type="AudioStream" uid="uid://cnhryo15jfeur" path="res://Sound/728757__techspiredminds__metallic-pickaxe-24.wav" id="11_gymyn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfpmb"]
 albedo_color = Color(0.477378, 0.5921, 0.625368, 1)
@@ -4770,6 +4769,7 @@ height = 3.645
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "state_machine") groups=["door", "player"]]
 script = ExtResource("1_8erm5")
+health = null
 anim_player = NodePath("CapsuleAnimation")
 state_machine = NodePath("StateMachine")
 
@@ -5014,9 +5014,6 @@ autoplay = "IDLE"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AbsorbItem"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0401635, 1.62145, 0)
 shape = SubResource("CapsuleShape3D_tx1dd")
-
-[node name="RockHit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_gymyn")
 
 [connection signal="area_entered" from="Remy/Armature/Skeleton3D/HandAttach/Node3D/Sword/SwordArea" to="." method="_on_sword_area_area_entered"]
 [connection signal="area_entered" from="Remy/Armature/Skeleton3D/HandAttach/Node3D/Sword/SwordArea" to="StateMachine/Attack" method="_on_sword_area_area_entered"]

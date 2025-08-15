@@ -35,7 +35,6 @@ func _physics_process(delta: float) -> void:
 		current_state.physics_update(delta)
 
 func transition(new_state_name: String):
-	print(new_state_name)
 	var new_state: State = states.get(new_state_name)
 	var current_state_name = current_state.get_state_name()
 	

@@ -8,18 +8,19 @@ func get_state_name() -> String:
 	return state_name
 
 func physics_update(delta: float) -> void:
-	anim_player.play(animation)
 	if player.input_dir != Vector2(0,0):
 		state_machine.transition("PlayerMovementState")
 		
 	if Input.is_action_just_pressed("shoot"):
-		state_machine.transition("PlayerAttackState")
+		state_machine.transition("PlayerPickaxeSwingState")
 		
 	if Input.is_action_pressed("block"):
 		state_machine.transition("PlayerBlockState")
 		
 	
-func Exit():
-	print("im doing something before exiting")
+func exit():
+	pass
+	#print("im doing something before exiting")
 
-	
+func enter():
+	anim_player.play(animation)

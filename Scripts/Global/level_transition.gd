@@ -17,8 +17,8 @@ func _ready() -> void:
 	SignalBus.room_change.connect(level_spawn)
 	
 func level_spawn(room, spawn_point, level_self : Node3D):
-	print("Room: " , room)
-	print("Spawn point: " , spawn_point)
+	#print("Room: " , room)
+	#print("Spawn point: " , spawn_point)
 	level_self.queue_free()
 	add_child(room)
 	Spawnner.spawn(spawn_point, room)

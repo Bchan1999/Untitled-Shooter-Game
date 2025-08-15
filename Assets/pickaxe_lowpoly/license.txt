@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pickaxe lowpoly
+* source:	https://sketchfab.com/3d-models/pickaxe-lowpoly-aa0f40cabcbf4496810a397f335f9833
+* author:	Ritsumei (https://sketchfab.com/ritsumei)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pickaxe lowpoly" (https://sketchfab.com/3d-models/pickaxe-lowpoly-aa0f40cabcbf4496810a397f335f9833) by Ritsumei (https://sketchfab.com/ritsumei) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

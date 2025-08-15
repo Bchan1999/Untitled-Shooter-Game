@@ -29,7 +29,13 @@ var item_score
 var input_dir := Vector2(0,0)
 
 func _ready() -> void:
-	var states : Array[State] = [PlayerIdleState.new(self), PlayerMovementState.new(self), PlayerAttackState.new(self), PlayerBlockState.new(self)]
+	var states : Array[State] = [
+	PlayerIdleState.new(self), 
+	PlayerMovementState.new(self), 
+	PlayerPickaxeSwingState.new(self),
+	#PlayerAttackState.new(self), 
+	#PlayerBlockState.new(self),
+	]
 	
 	state_machine.start_machine(states)
 
@@ -134,3 +140,15 @@ func player_take_damage(dmg):
 	#curr_health = clampf(curr_health, 0, MAX_HEALTH)
 	#if curr_health <= 0:
 		#print("ME DEAD")
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	print("Body: ", body)
+	if(body.is_in_group('rock')):
+		print('give rock damage ')
+		$RockHit.play()
+		if (body.has_method('give_me_damage')):
+			body.give_me_damage(3)
+			
+
+func _on_absorb_item_area_entered(area: Area3D) -> void:
+	print('picked up something')

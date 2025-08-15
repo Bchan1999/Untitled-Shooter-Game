@@ -13,7 +13,7 @@ func get_state_name() -> String:
 	return state_name
 	
 func physics_update(delta: float) -> void:
-	anim_player.play(animation)
+	
 	
 	var direction := Vector3(player.input_dir.x, 0, player.input_dir.y).normalized()
 	var angleCoord = Vector2(player.input_dir.x, -player.input_dir.y)
@@ -35,7 +35,10 @@ func physics_update(delta: float) -> void:
 		state_machine.transition("PlayerIdleState")
 		
 	if Input.is_action_pressed("shoot"):
-		state_machine.transition("PlayerAttackState")
+		state_machine.transition("PlayerPickaxeSwingState")
 		
 func exit():
 	player.velocity = Vector3(0,0,0)
+	
+func enter():
+	anim_player.play(animation)

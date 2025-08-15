@@ -12,5 +12,6 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_released("block"):
 		state_machine.transition("PlayerIdleState")
 		
-func Exit():
-	print("im doing something before exiting")
+func exit():
+	pass
+	#print("im doing something before exiting")

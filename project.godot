@@ -38,6 +38,8 @@ room1=""
 room2=""
 item=""
 door=""
+rock=""
+absorb=""
 
 [input]
 

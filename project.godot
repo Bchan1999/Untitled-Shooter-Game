@@ -19,6 +19,7 @@ config/icon="res://test_image.svg"
 
 SignalBus="*res://Scripts/Global/SignalBus.gd"
 Spawnner="*res://Scripts/Global/spawnner.gd"
+GameDebug="*res://Scripts/Global/game_debug.gd"
 
 [debug]
 

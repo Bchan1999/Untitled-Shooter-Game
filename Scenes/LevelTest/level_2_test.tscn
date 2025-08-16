@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqwvvs3by8al4"]
+[gd_scene load_steps=8 format=3 uid="uid://cqwvvs3by8al4"]
 
 [ext_resource type="Script" uid="uid://u3o8u1dd8s7v" path="res://Scripts/LevelTest/level_2_test.gd" id="1_3fnry"]
+[ext_resource type="PackedScene" uid="uid://dlwpmpbcjv4bb" path="res://Scenes/LevelTest/exit_template_scene.tscn" id="2_nvgcr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3fnry"]
 size = Vector3(12.33, 0.59, 19.605)
@@ -33,14 +34,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_r132a")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_nvgcr")
 
-[node name="Exit1" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.1556)
-
-[node name="Exit" type="CollisionShape3D" parent="Exit1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.208, 0)
-shape = SubResource("BoxShape3D_3fnry")
-
 [node name="Spawn1" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.77781)
+
+[node name="Exit1" parent="." instance=ExtResource("2_nvgcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.0702)
+
+[node name="Exit" type="CollisionShape3D" parent="Exit1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.208, -0.91462)
+shape = SubResource("BoxShape3D_3fnry")
 
 [connection signal="body_entered" from="Exit1" to="." method="_on_exit_1_body_entered"]

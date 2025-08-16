@@ -13,13 +13,18 @@ func _ready() -> void:
 		pass
 	else:
 		assert(false, "Please assign a starting level to this node")
-		
 	SignalBus.room_change.connect(level_spawn)
 	
 func level_spawn(room, spawn_point, level_self : Node3D):
 	#print("Room: " , room)
 	#print("Spawn point: " , spawn_point)
+	
+	Spawnner.spawnAway()
+	await wait(0.01)
 	level_self.queue_free()
-	add_child(room)
-	Spawnner.spawn(spawn_point, room)
+	self.add_child(room)
+	Spawnner.spawnRoom(spawn_point, room)
 	pass
+	
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout

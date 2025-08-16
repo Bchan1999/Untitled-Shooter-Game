@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ce55sp2643r1g"]
+[gd_scene load_steps=33 format=3 uid="uid://ce55sp2643r1g"]
 
 [ext_resource type="Script" uid="uid://cc0mk7p1nqt8d" path="res://Scenes/main.gd" id="1_pahu5"]
 [ext_resource type="Script" uid="uid://tbhqumm30cra" path="res://Scenes/node_3d.gd" id="2_pahu5"]
@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dpe3670wisdxj" path="res://Scenes/level_transition.tscn" id="9_hptm8"]
 [ext_resource type="PackedScene" uid="uid://ddboot4jeb8mx" path="res://Scenes/spawnner.tscn" id="10_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://bajdmqwlrppbx" path="res://Scenes/Enemy_placeholder.tscn" id="10_iqswu"]
-[ext_resource type="PackedScene" uid="uid://b8wsl7tni3iyx" path="res://Scenes/Rock_Test.tscn" id="11_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://qniv2kghxfbs" path="res://Scenes/pebble.tscn" id="12_6iyac"]
+[ext_resource type="PackedScene" uid="uid://dfptopv0k2wb6" path="res://Scenes/LevelTest/level_3_test.tscn" id="11_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://bb0ngiqlis80q" path="res://Interface/control.tscn" id="12_6iyac"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_w0qby"]
 vertices = PackedVector3Array(-8.5, 1.5, 13.25, -5.5, 1.5, 14.75, -2.5, 1.5, 15.5, 3.75, 1.5, 15.25, 13.25, 1.5, 8.5, 14.75, 1.5, 5.5, 15.5, 1.5, 2.5, 15.25, 1.5, -3.75, 8.5, 1.5, -13.25, 5.5, 1.5, -14.75, 2.5, 1.5, -15.5, -3.75, 1.5, -15.25, 12.75, 1.5, -9.25, -13.25, 1.5, -8.5, -14.75, 1.5, -5.5, -15.5, 1.5, -2.5, -15.25, 1.5, 3.75, -9.25, 1.5, -12.75, -12.75, 1.5, 9.25, 9.25, 1.5, 12.75)
@@ -81,8 +81,6 @@ normal_texture = ExtResource("3_w0qby")
 [sub_resource type="QuadMesh" id="QuadMesh_iqswu"]
 size = Vector2(32, 32)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hptm8"]
-
 [node name="Main" type="Node3D"]
 transform = Transform3D(0.999867, -0.0163007, 0, 0.0163007, 0.999867, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_pahu5")
@@ -98,14 +96,14 @@ light_specular = 3.225
 light_bake_mode = 1
 sky_mode = 1
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Camera" type="Node3D" parent="."]
 script = ExtResource("2_pahu5")
 player_path = NodePath("../Player")
 
-[node name="Camera3D2" type="Camera3D" parent="Node3D"]
-transform = Transform3D(0.999999, 0.000715846, -0.00129117, -6.68429e-05, 0.895637, 0.444787, 0.00147482, -0.444786, 0.895636, -0.206501, 17.1624, 46.7828)
+[node name="Camera3D2" type="Camera3D" parent="Camera"]
+transform = Transform3D(0.999998, -0.000953127, 0.00146209, 0, 0.837719, 0.546102, -0.00174533, -0.546101, 0.837717, 0.0173313, 30.892, 46.7828)
 projection = 1
-size = 14.694
+size = 19.439
 
 [node name="Player" parent="." instance=ExtResource("3_e1hiu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44641, 1.04739, -5.40591)
@@ -209,27 +207,16 @@ script = ExtResource("8_lcym1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.816, 1.84775, 0)
 
 [node name="Level1Test" parent="." instance=ExtResource("8_344ge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.7601, -0.56669, 0)
 
 [node name="LevelTransition" parent="." node_paths=PackedStringArray("curr_level") instance=ExtResource("9_hptm8")]
-curr_level = NodePath("../Level1Test")
+curr_level = NodePath("../Level3Test")
 
 [node name="Spawnner" parent="." instance=ExtResource("10_d1ilt")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.847637, 51.9931, 0)
-mesh = SubResource("CapsuleMesh_hptm8")
+[node name="SpawnAway" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.657332, 40.32, 0)
 
-[node name="Rock" parent="." instance=ExtResource("11_d1ilt")]
-transform = Transform3D(1, -1.90066e-09, 0, 1.90066e-09, 1, 0, 0, 0, 1, 4.47946, -0.0730281, -0.134895)
+[node name="Level3Test" parent="." instance=ExtResource("11_d1ilt")]
 
-[node name="Rock2" parent="." instance=ExtResource("11_d1ilt")]
-transform = Transform3D(0.554948, 0.00725562, 0.831853, 0.00725562, 0.999882, -0.0135616, -0.831853, 0.0135616, 0.55483, -6.1096, 0.0996039, -0.134895)
-
-[node name="Rock3" parent="." instance=ExtResource("11_d1ilt")]
-transform = Transform3D(-0.390815, 0.0232107, -0.920176, 0.0231849, 0.999613, 0.0153674, 0.920177, -0.0153283, -0.391202, -6.1096, 0.0996039, 5.2963)
-
-[node name="Rock4" parent="." instance=ExtResource("11_d1ilt")]
-transform = Transform3D(-0.781787, 0.0290482, -0.622869, 0.0290482, 0.999526, 0.0101545, 0.622869, -0.0101545, -0.78226, -0.302372, 0.00492945, 5.2963)
-
-[node name="Pebble" parent="." instance=ExtResource("12_6iyac")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999867, 0.0163007, 0)
+[node name="Control" parent="." instance=ExtResource("12_6iyac")]

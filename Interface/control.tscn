@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb0ngiqlis80q"]
+
+[ext_resource type="Texture2D" uid="uid://dubkflltfnf3x" path="res://test_image.svg" id="1_dsr68"]
+[ext_resource type="Script" uid="uid://snfryodcjg1w" path="res://Interface/menu_button.gd" id="3_g87v3"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButton" type="MenuButton" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 41.0
+offset_right = 190.0
+offset_bottom = 177.0
+scale = Vector2(0.595, 0.595)
+icon = ExtResource("1_dsr68")
+item_count = 2
+popup/item_0/text = "show_exit_property"
+popup/item_0/checkable = 1
+popup/item_0/id = 0
+popup/item_1/text = "Enemy_health"
+popup/item_1/checkable = 1
+popup/item_1/id = 1
+script = ExtResource("3_g87v3")
+
+[connection signal="toggled" from="MenuButton" to="." method="_on_menu_button_toggled"]

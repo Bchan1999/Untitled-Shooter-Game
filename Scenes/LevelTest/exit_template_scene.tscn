@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlwpmpbcjv4bb"]
+
+[ext_resource type="Script" uid="uid://chw73rlhofk15" path="res://Scripts/LevelTest/in_game_label.gd" id="1_eojlx"]
+[ext_resource type="Script" uid="uid://chikisfb21qye" path="res://Scripts/LevelTest/inspector_label.gd" id="2_ymmgd"]
+
+[node name="Exit_template" type="Area3D"]
+
+[node name="In-Game-Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.910387, 0)
+pixel_size = 0.028
+billboard = 1
+script = ExtResource("1_eojlx")
+
+[node name="Inspector-Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63729, 0)
+pixel_size = 0.037
+billboard = 1
+script = ExtResource("2_ymmgd")

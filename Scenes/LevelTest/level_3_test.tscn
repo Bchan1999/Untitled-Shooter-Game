@@ -1,3 +1,48 @@
-[gd_scene format=3 uid="uid://dfptopv0k2wb6"]
+[gd_scene load_steps=8 format=3 uid="uid://dfptopv0k2wb6"]
+
+[ext_resource type="Script" uid="uid://h5q1aappsevt" path="res://Scripts/LevelTest/level_3_test.gd" id="1_yamgq"]
+[ext_resource type="PackedScene" uid="uid://dlwpmpbcjv4bb" path="res://Scenes/LevelTest/exit_template_scene.tscn" id="2_awwot"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mdybh"]
+size = Vector3(19.695, 0.58, 18.42)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yamgq"]
+size = Vector3(8.49, 0.57, 1.905)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awwot"]
+albedo_color = Color(0.148696, 0.401503, 0.455838, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jjgum"]
+data = PackedVector3Array(-9.8475, 0.29, 9.21, 9.8475, 0.29, 9.21, -9.8475, -0.29, 9.21, 9.8475, 0.29, 9.21, 9.8475, -0.29, 9.21, -9.8475, -0.29, 9.21, 9.8475, 0.29, -9.21, -9.8475, 0.29, -9.21, 9.8475, -0.29, -9.21, -9.8475, 0.29, -9.21, -9.8475, -0.29, -9.21, 9.8475, -0.29, -9.21, 9.8475, 0.29, 9.21, 9.8475, 0.29, -9.21, 9.8475, -0.29, 9.21, 9.8475, 0.29, -9.21, 9.8475, -0.29, -9.21, 9.8475, -0.29, 9.21, -9.8475, 0.29, -9.21, -9.8475, 0.29, 9.21, -9.8475, -0.29, -9.21, -9.8475, 0.29, 9.21, -9.8475, -0.29, 9.21, -9.8475, -0.29, -9.21, 9.8475, 0.29, 9.21, -9.8475, 0.29, 9.21, 9.8475, 0.29, -9.21, -9.8475, 0.29, 9.21, -9.8475, 0.29, -9.21, 9.8475, 0.29, -9.21, -9.8475, -0.29, 9.21, 9.8475, -0.29, 9.21, -9.8475, -0.29, -9.21, 9.8475, -0.29, 9.21, 9.8475, -0.29, -9.21, -9.8475, -0.29, -9.21)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gl3f1"]
+size = Vector3(6.705, 1.825, 1)
 
 [node name="Level3Test" type="Node3D"]
+script = ExtResource("1_yamgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_mdybh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.8006)
+mesh = SubResource("BoxMesh_yamgq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_awwot")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jjgum")
+
+[node name="Spawn1" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0466623)
+
+[node name="Exit1" parent="." instance=ExtResource("2_awwot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.6355)
+
+[node name="Exit" type="CollisionShape3D" parent="Exit1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.208, 0.431929)
+shape = SubResource("BoxShape3D_gl3f1")
+
+[connection signal="body_entered" from="Exit1" to="." method="_on_exit_1_body_entered"]

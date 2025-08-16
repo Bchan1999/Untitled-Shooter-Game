@@ -13,8 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://cnhryo15jfeur" path="res://Sound/728757__techspiredminds__metallic-pickaxe-24.wav" id="11_gymyn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfpmb"]
-albedo_color = Color(0.477378, 0.5921, 0.625368, 1)
-metallic = 0.39
+albedo_color = Color(0.91039, 0.701306, 0.541458, 1)
+metallic = 0.04
 metallic_specular = 0.0
 roughness = 0.45
 normal_enabled = true

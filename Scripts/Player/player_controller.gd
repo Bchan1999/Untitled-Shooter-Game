@@ -28,19 +28,16 @@ var item_score
 
 var input_dir := Vector2(0,0)
 
+var MAX_STAMINA = 10
+var pickaxe_dmg = 3
+var curr_stamina
+
 func _ready() -> void:
-	var states : Array[State] = [
-	PlayerIdleState.new(self), 
-	PlayerMovementState.new(self), 
-	PlayerPickaxeSwingState.new(self),
-	#PlayerAttackState.new(self), 
-	#PlayerBlockState.new(self),
-	]
-	
-	state_machine.start_machine(states)
+	curr_stamina = MAX_STAMINA
 
 func _physics_process(delta: float) -> void:
-	$TextHP.text = "Health: " + str(health)
+	$HealthLabel.text = "Health: " + str(health)
+	$StaminaLabel.text = "Stamina: " + str(curr_stamina)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -141,14 +138,27 @@ func player_take_damage(dmg):
 	#if curr_health <= 0:
 		#print("ME DEAD")
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	print("Body: ", body)
-	if(body.is_in_group('rock')):
-		print('give rock damage ')
-		$RockHit.play()
-		if (body.has_method('give_me_damage')):
-			body.give_me_damage(3)
+#func _on_area_3d_body_entered(body: Node3D) -> void:
+	#print("Body: ", body)
+	#if(body.is_in_group('rock')):
+		#print('give rock damage ')
+		#$RockHit.play()
+		#if (body.has_method('give_me_damage')):
+			#body.give_me_damage(3)
+			#
 			
+#func _on_area_3d_body_entered(body: Node3D) -> void:
+	#print("Body: ", body)
+	#if(body.is_in_group('rock')):
+		#print('give rock damage ')
+		#rockHit.play()
+		#if (body.has_method('give_me_damage')):
+			#stamina_reduce(1)
+			#body.give_me_damage(pickaxe_dmg)	
 
 func _on_absorb_item_area_entered(area: Area3D) -> void:
-	print('picked up something')
+	print('Player Controller: you picked me up')
+	pass # Replace with function body.
+	
+func stamina_reduce(reduce_by):
+	curr_stamina = curr_stamina - reduce_by

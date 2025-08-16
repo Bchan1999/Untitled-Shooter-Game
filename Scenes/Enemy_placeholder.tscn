@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bajdmqwlrppbx"]
+[gd_scene load_steps=11 format=3 uid="uid://bajdmqwlrppbx"]
 
 [ext_resource type="Script" uid="uid://r0k1rhw2o0lf" path="res://Scripts/enemy_placeholder.gd" id="1_g73ly"]
 [ext_resource type="Material" uid="uid://bwym7cxi1p0aj" path="res://Material/enemy_placeholder.tres" id="2_0sklc"]
 [ext_resource type="PackedScene" uid="uid://cr85ut48biu6v" path="res://Assets/Enemy/low_poly_sword/scene.gltf" id="3_5usrs"]
-[ext_resource type="Script" uid="uid://t2xrnxb1eyrp" path="res://Scripts/Player/player_state.gd" id="4_cssfi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0sklc"]
 height = 3.51
@@ -120,10 +119,6 @@ shape = SubResource("SphereShape3D_5usrs")
 [node name="PlayerHitDetect" type="CollisionShape3D" parent="PlayerHitDetect"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93813, 0)
 shape = SubResource("SphereShape3D_cssfi")
-
-[node name="PlayerState" type="Node" parent="."]
-script = ExtResource("4_cssfi")
-metadata/_custom_type_script = "uid://t2xrnxb1eyrp"
 
 [connection signal="timeout" from="HurtAnim" to="." method="_on_hurt_anim_timeout"]
 [connection signal="body_entered" from="PlayerDetect2" to="." method="_on_area_3d_body_entered"]

@@ -11,14 +11,11 @@ func _ready() -> void:
 	
 func spawnRoom(spawn_point, room):
 	var str = "/root/Main/LevelTransition/" + room.get_class_name() + "/" + spawn_point
-	#var path = get_node("/Main/LevelTransition/" + room.get_class_name() + "/" + spawn_point)
+
 	var path = get_node("/root/Main/LevelTransition/" + room.get_class_name() + "/" + spawn_point)
-	#var newPAth = get_node("/root/SignalBus")
-	#print("Path pos: " , path.global_position)
+
 	player.global_position = path.global_position
-	#print("Player pos: " , player.global_position)
-	#print("Path pos: " , path.global_position)
-	#print("bitch")
+
 	
 func spawnAway():
 	var spawnAway = get_node("/root/Main/SpawnAway")

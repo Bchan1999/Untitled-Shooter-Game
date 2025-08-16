@@ -4789,14 +4789,6 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "Health: "
 
-[node name="StaminaLabel" type="Label" parent="."]
-offset_left = 26.0
-offset_top = 969.0
-offset_right = 315.0
-offset_bottom = 1057.0
-theme_override_font_sizes/font_size = 64
-text = "Stamina: "
-
 [node name="Remy" parent="." instance=ExtResource("2_f1ek2")]
 transform = Transform3D(0.995884, 0, -0.0906326, 0, 1, 0, 0.0906326, 0, 0.995884, 0.0212947, 0, -0.0167297)
 visible = false
@@ -4966,17 +4958,14 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67676, 0)
 shape = SubResource("CapsuleShape3D_scwsi")
 
-[node name="StateMachine" type="Node3D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node3D" parent="."]
 script = ExtResource("3_tx1dd")
-initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Idle" type="Node3D" parent="StateMachine"]
 script = ExtResource("4_gymyn")
-player = NodePath("../..")
 
-[node name="Movement" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Movement" type="Node3D" parent="StateMachine"]
 script = ExtResource("5_pu2lt")
-player = NodePath("../..")
 
 [node name="Attack" type="Node3D" parent="StateMachine"]
 script = ExtResource("6_ukyrk")
@@ -4984,17 +4973,24 @@ script = ExtResource("6_ukyrk")
 [node name="Block" type="Node3D" parent="StateMachine"]
 script = ExtResource("7_7dp3o")
 
-[node name="PickAxeSwing" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("rockHit", "player")]
+[node name="PickAxeSwing" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("rockHit")]
 script = ExtResource("8_tx1dd")
 rockHit = NodePath("../../RockHit")
-player = NodePath("../..")
 
 [node name="PlayerState" type="Node3D" parent="." node_paths=PackedStringArray("player", "anim_player", "state_machine", "label")]
 script = ExtResource("8_h4iuc")
 player = NodePath("..")
 anim_player = NodePath("../CapsuleAnimation")
 state_machine = NodePath("../StateMachine")
-label = NodePath("../StaminaLabel")
+label = NodePath("StaminaLabel")
+
+[node name="StaminaLabel" type="Label" parent="PlayerState"]
+offset_left = 26.0
+offset_top = 969.0
+offset_right = 315.0
+offset_bottom = 1057.0
+theme_override_font_sizes/font_size = 64
+text = "Stamina: "
 
 [node name="Timer" type="Timer" parent="."]
 

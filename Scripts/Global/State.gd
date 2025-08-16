@@ -1,5 +1,7 @@
-extends Node
+extends Node3D
 class_name State
+
+signal Transitioned
 
 #called when the machine transtions to this state
 func enter():

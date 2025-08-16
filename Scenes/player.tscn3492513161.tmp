@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bpl2wwkspu6c"]
+[gd_scene load_steps=36 format=3 uid="uid://bpl2wwkspu6c"]
 
 [ext_resource type="Script" uid="uid://b5mu3106vakik" path="res://Scripts/Player/player_controller.gd" id="1_8erm5"]
 [ext_resource type="PackedScene" uid="uid://dg1impn4np33b" path="res://Assets/Remy/Remy.glb" id="2_f1ek2"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://1d45k4w67t4g" path="res://Scripts/Player/pick_axe_swing.gd" id="8_tx1dd"]
 [ext_resource type="PackedScene" uid="uid://cfxdb4x0ji7sm" path="res://Assets/pickaxe_lowpoly/scene.gltf" id="9_f1ek2"]
 [ext_resource type="AudioStream" uid="uid://cnhryo15jfeur" path="res://Sound/728757__techspiredminds__metallic-pickaxe-24.wav" id="11_gymyn"]
+[ext_resource type="Script" uid="uid://gmb5gcqivpxo" path="res://Scenes/sibling.gd" id="11_ukyrk"]
+[ext_resource type="Script" uid="uid://bu2meu8lqpeeu" path="res://Scenes/child.gd" id="12_7dp3o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfpmb"]
 albedo_color = Color(0.91039, 0.701306, 0.541458, 1)
@@ -4789,14 +4791,6 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "Health: "
 
-[node name="StaminaLabel" type="Label" parent="."]
-offset_left = 26.0
-offset_top = 969.0
-offset_right = 315.0
-offset_bottom = 1057.0
-theme_override_font_sizes/font_size = 64
-text = "Stamina: "
-
 [node name="Remy" parent="." instance=ExtResource("2_f1ek2")]
 transform = Transform3D(0.995884, 0, -0.0906326, 0, 1, 0, 0.0906326, 0, 0.995884, 0.0212947, 0, -0.0167297)
 visible = false
@@ -4966,17 +4960,14 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67676, 0)
 shape = SubResource("CapsuleShape3D_scwsi")
 
-[node name="StateMachine" type="Node3D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node3D" parent="."]
 script = ExtResource("3_tx1dd")
-initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Idle" type="Node3D" parent="StateMachine"]
 script = ExtResource("4_gymyn")
-player = NodePath("../..")
 
-[node name="Movement" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Movement" type="Node3D" parent="StateMachine"]
 script = ExtResource("5_pu2lt")
-player = NodePath("../..")
 
 [node name="Attack" type="Node3D" parent="StateMachine"]
 script = ExtResource("6_ukyrk")
@@ -4984,17 +4975,14 @@ script = ExtResource("6_ukyrk")
 [node name="Block" type="Node3D" parent="StateMachine"]
 script = ExtResource("7_7dp3o")
 
-[node name="PickAxeSwing" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("rockHit", "player")]
+[node name="PickAxeSwing" type="Node3D" parent="StateMachine"]
 script = ExtResource("8_tx1dd")
-rockHit = NodePath("../../RockHit")
-player = NodePath("../..")
 
-[node name="PlayerState" type="Node3D" parent="." node_paths=PackedStringArray("player", "anim_player", "state_machine", "label")]
+[node name="PlayerState" type="Node3D" parent="." node_paths=PackedStringArray("player", "anim_player", "state_machine")]
 script = ExtResource("8_h4iuc")
 player = NodePath("..")
 anim_player = NodePath("../CapsuleAnimation")
 state_machine = NodePath("../StateMachine")
-label = NodePath("../StaminaLabel")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -5019,6 +5007,12 @@ libraries = {
 }
 autoplay = "IDLE"
 
+[node name="Sibling" type="Node3D" parent="."]
+script = ExtResource("11_ukyrk")
+
+[node name="Child" type="Node3D" parent="Sibling"]
+script = ExtResource("12_7dp3o")
+
 [node name="AbsorbItem" type="Area3D" parent="." groups=["absorb"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AbsorbItem"]
@@ -5030,9 +5024,11 @@ stream = ExtResource("11_gymyn")
 
 [connection signal="area_entered" from="Remy/Armature/Skeleton3D/HandAttach/Node3D/Sword/SwordArea" to="." method="_on_sword_area_area_entered"]
 [connection signal="body_entered" from="Remy/Armature/Skeleton3D/HandAttach/Node3D/Sword/SwordArea" to="." method="_on_sword_area_body_entered"]
-[connection signal="body_entered" from="Sketchfab_Scene/Sketchfab_model/328be0ac7d2f4c5c811d7b4e3e22fa03_fbx/RootNode/pickaxe_low/pickaxe_low__0/StaticBody3D/CollisionShape3D/Area3D" to="StateMachine/PickAxeSwing" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Sketchfab_Scene/Sketchfab_model/328be0ac7d2f4c5c811d7b4e3e22fa03_fbx/RootNode/pickaxe_low/pickaxe_low__0/StaticBody3D/CollisionShape3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="area_entered" from="AbsorbItem" to="." method="_on_absorb_item_area_entered"]
 [connection signal="area_entered" from="AbsorbItem" to="PlayerState" method="_on_absorb_item_area_entered"]
+[connection signal="area_entered" from="AbsorbItem" to="Sibling" method="_on_absorb_item_area_entered"]
+[connection signal="area_entered" from="AbsorbItem" to="Sibling/Child" method="_on_absorb_item_area_entered"]
 
 [editable path="Remy"]
 [editable path="Sketchfab_Scene"]

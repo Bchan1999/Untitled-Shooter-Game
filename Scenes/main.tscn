@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ce55sp2643r1g"]
+[gd_scene load_steps=33 format=3 uid="uid://ce55sp2643r1g"]
 
 [ext_resource type="Script" uid="uid://cc0mk7p1nqt8d" path="res://Scenes/main.gd" id="1_pahu5"]
 [ext_resource type="Script" uid="uid://tbhqumm30cra" path="res://Scenes/node_3d.gd" id="2_pahu5"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ddboot4jeb8mx" path="res://Scenes/spawnner.tscn" id="10_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://bajdmqwlrppbx" path="res://Scenes/Enemy_placeholder.tscn" id="10_iqswu"]
 [ext_resource type="PackedScene" uid="uid://bb0ngiqlis80q" path="res://Interface/control.tscn" id="12_6iyac"]
+[ext_resource type="PackedScene" uid="uid://dsa6d11aqh1wr" path="res://Scenes/bomb_rock.tscn" id="12_fdnlq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_w0qby"]
 vertices = PackedVector3Array(-8.5, 1.5, 13.25, -5.5, 1.5, 14.75, -2.5, 1.5, 15.5, 3.75, 1.5, 15.25, 13.25, 1.5, 8.5, 14.75, 1.5, 5.5, 15.5, 1.5, 2.5, 15.25, 1.5, -3.75, 8.5, 1.5, -13.25, 5.5, 1.5, -14.75, 2.5, 1.5, -15.5, -3.75, 1.5, -15.25, 12.75, 1.5, -9.25, -13.25, 1.5, -8.5, -14.75, 1.5, -5.5, -15.5, 1.5, -2.5, -15.25, 1.5, 3.75, -9.25, 1.5, -12.75, -12.75, 1.5, 9.25, 9.25, 1.5, 12.75)
@@ -217,3 +218,6 @@ curr_level = NodePath("../Level1Test")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.657332, 40.32, 0)
 
 [node name="Control" parent="." instance=ExtResource("12_6iyac")]
+
+[node name="BombRock" parent="." instance=ExtResource("12_fdnlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.68737, -0.141629, -1.64556)

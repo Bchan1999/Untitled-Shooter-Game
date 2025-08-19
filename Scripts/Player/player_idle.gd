@@ -8,7 +8,6 @@ func get_state_name() -> String:
 	return state_name
 
 func physics_update(delta: float) -> void:
-	print('IDLE is playing')
 	if player.input_dir != Vector2(0,0):
 		#state_machine.transition("PlayerMovementState")
 		Transitioned.emit(self, "movement")
